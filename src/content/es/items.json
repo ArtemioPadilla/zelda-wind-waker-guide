@@ -17,7 +17,7 @@
   { "id": "batuta-vientos", "name": "Batuta de los Vientos", "category": "sailing", "location": "Regalo de las tres hadas del bosque, Refugio del Bosque", "chapter": "1-5", "essential": true },
   { "id": "rey-cabo-rojo", "name": "El Rey de Cabo Rojo", "category": "sailing", "location": "Te acompaña desde que sales de la 1ª Fortaleza Abandonada", "chapter": "1-2", "essential": true },
   { "id": "canon", "name": "Cañón", "category": "sailing", "location": "Comprado en el barco de mercancía de Beedle (200 rupias) tras encontrar su carta", "chapter": "2-3" },
-  { "id": "carcaj-mas", "name": "Carcaj+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de flechas (30 → 60 → 99)", "chapter": "2-6" },
-  { "id": "bolsa-bombas-mas", "name": "Bolsa de Bombas+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de bombas (30 → 60 → 99)", "chapter": "2-6" },
-  { "id": "billetera-mas", "name": "Billetera+", "category": "upgrades", "location": "Comprada a Tingle en Isla Pico de Aguja — aumenta el límite de rupias (200 → 500 → 1.000)", "chapter": "2-6" }
+  { "id": "carcaj-mas", "name": "Carcaj+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de flechas", "chapter": "2-6", "upgradeStages": [30, 60, 99], "upgradeUnit": "flechas" },
+  { "id": "bolsa-bombas-mas", "name": "Bolsa de Bombas+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de bombas", "chapter": "2-6", "upgradeStages": [30, 60, 99], "upgradeUnit": "bombas" },
+  { "id": "billetera-mas", "name": "Billetera+", "category": "upgrades", "location": "Comprada a Tingle en Isla Pico de Aguja — aumenta el límite de rupias", "chapter": "2-6", "upgradeStages": [200, 500, 1000], "upgradeUnit": "rupias" }
 ]

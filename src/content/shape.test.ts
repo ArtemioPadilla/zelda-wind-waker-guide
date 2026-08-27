@@ -77,6 +77,34 @@ describe('content: heart pieces', () => {
     const numbers = heartPieces.map((h) => h.number).sort((a, b) => a - b);
     expect(numbers).toEqual(Array.from({ length: 44 }, (_, i) => i + 1));
   });
+
+  it('every entry with map coordinates has both x and y within 0-100, and es/en agree on them', () => {
+    type HP = { id: string; x?: number; y?: number };
+    const es = loadJson<HP>('es', 'heart-pieces');
+    const en = loadJson<HP>('en', 'heart-pieces');
+    for (const h of es) {
+      const hasX = h.x !== undefined;
+      const hasY = h.y !== undefined;
+      expect(hasX, `${h.id}: x and y must both be set or both be absent`).toBe(hasY);
+      if (hasX && hasY) {
+        expect(h.x).toBeGreaterThanOrEqual(0);
+        expect(h.x).toBeLessThanOrEqual(100);
+        expect(h.y).toBeGreaterThanOrEqual(0);
+        expect(h.y).toBeLessThanOrEqual(100);
+      }
+    }
+    const byId = new Map(en.map((h) => [h.id, h]));
+    for (const h of es) {
+      expect(byId.get(h.id)?.x).toBe(h.x);
+      expect(byId.get(h.id)?.y).toBe(h.y);
+    }
+  });
+
+  it('only the 2 entries without a single fixed island (hp-08, hp-35) lack map coordinates', () => {
+    const es = loadJson<{ id: string; x?: number }>('es', 'heart-pieces');
+    const missing = es.filter((h) => h.x === undefined).map((h) => h.id);
+    expect(missing.sort()).toEqual(['hp-08', 'hp-35']);
+  });
 });
 
 describe('content: charts', () => {
@@ -99,6 +127,17 @@ describe('content: items', () => {
   it('every item has a valid category', () => {
     const items = loadJson<{ id: string; category: string }>('es', 'items');
     for (const i of items) expect(VALID_CATEGORIES.has(i.category)).toBe(true);
+  });
+
+  it('every upgradeStages progression has at least 2 strictly increasing values', () => {
+    const items = loadJson<{ id: string; upgradeStages?: number[] }>('es', 'items');
+    const withStages = items.filter((i) => i.upgradeStages);
+    expect(withStages.length).toBeGreaterThan(0);
+    for (const i of withStages) {
+      const stages = i.upgradeStages!;
+      expect(stages.length).toBeGreaterThanOrEqual(2);
+      for (let k = 1; k < stages.length; k++) expect(stages[k]).toBeGreaterThan(stages[k - 1]);
+    }
   });
 });
 

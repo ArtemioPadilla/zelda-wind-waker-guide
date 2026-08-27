@@ -17,7 +17,7 @@
   { "id": "batuta-vientos", "name": "Wind Waker", "category": "sailing", "location": "Gift from the three forest fairies, Forest Haven", "chapter": "1-5", "essential": true },
   { "id": "rey-cabo-rojo", "name": "The King of Red Lions", "category": "sailing", "location": "Joins you as soon as you leave the 1st Forsaken Fortress", "chapter": "1-2", "essential": true },
   { "id": "canon", "name": "Cannon", "category": "sailing", "location": "Bought from Beedle's shop ship (200 rupees) once you find its chart", "chapter": "2-3" },
-  { "id": "carcaj-mas", "name": "Quiver+", "category": "upgrades", "location": "Great Fairies — raises arrow capacity (30 → 60 → 99)", "chapter": "2-6" },
-  { "id": "bolsa-bombas-mas", "name": "Bomb Bag+", "category": "upgrades", "location": "Great Fairies — raises bomb capacity (30 → 60 → 99)", "chapter": "2-6" },
-  { "id": "billetera-mas", "name": "Wallet+", "category": "upgrades", "location": "Bought from Tingle on Rock Spire Isle — raises the rupee cap (200 → 500 → 1,000)", "chapter": "2-6" }
+  { "id": "carcaj-mas", "name": "Quiver+", "category": "upgrades", "location": "Great Fairies — raises arrow capacity", "chapter": "2-6", "upgradeStages": [30, 60, 99], "upgradeUnit": "arrows" },
+  { "id": "bolsa-bombas-mas", "name": "Bomb Bag+", "category": "upgrades", "location": "Great Fairies — raises bomb capacity", "chapter": "2-6", "upgradeStages": [30, 60, 99], "upgradeUnit": "bombs" },
+  { "id": "billetera-mas", "name": "Wallet+", "category": "upgrades", "location": "Bought from Tingle on Rock Spire Isle — raises the rupee cap", "chapter": "2-6", "upgradeStages": [200, 500, 1000], "upgradeUnit": "rupees" }
 ]

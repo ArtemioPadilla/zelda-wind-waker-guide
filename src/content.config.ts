@@ -27,6 +27,13 @@ const itemsSchema = z.object({
   chapter: z.string().optional(),
   notes: z.string().optional(),
   essential: z.boolean().default(false),
+  // Numeric before/after progression for the 3 Great-Fairy/Tingle capacity
+  // upgrades (Quiver+, Bomb Bag+, Wallet+) — modeled as real numbers (not
+  // left as a "30 → 60 → 99" string baked into `location`) so ItemsPage can
+  // render a compact visual stage comparison instead of flat text. Optional:
+  // only the 3 items with a genuine multi-stage progression set it.
+  upgradeStages: z.array(z.number().nonnegative()).min(2).optional(),
+  upgradeUnit: z.string().optional(),
 });
 
 // The primary completionist checklist — 44 Pieces of Heart grouped by island
@@ -37,6 +44,17 @@ const heartPiecesSchema = z.object({
   chapter: z.string(),
   location: z.string(),
   note: z.string().optional(),
+  // Pin position on the Great-Sea map, as a percentage of the map's square
+  // viewBox (0-100, same coordinate space for both axes — see
+  // src/lib/greatSeaGrid.ts). Derived from the same 7x7 sector grid the
+  // `atlas` collection already uses (island name -> atlas sector -> percent),
+  // with a small deterministic jitter for islands that hold more than one
+  // Piece of Heart so their pins don't fully overlap. Optional: 2 of the 44
+  // entries (hp-08 "Any mailbox", hp-35 "Various islands") have no single
+  // fixed location and are omitted from the map — they still appear in the
+  // list view, which stays the always-available, non-map-only alternative.
+  x: z.number().min(0).max(100).optional(),
+  y: z.number().min(0).max(100).optional(),
 });
 
 // Discriminated by `kind`: a Triforce Chart always leads to a shard (and
