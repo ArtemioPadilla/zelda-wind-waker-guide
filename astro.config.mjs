@@ -13,7 +13,11 @@ const asset = (p) => `${BASE.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
 const SCOPE = BASE.endsWith('/') ? BASE : `${BASE}/`;
 
 export default defineConfig({
-  site: 'https://artemiopadilla.github.io',
+  // The account's Pages sites are served from its custom domain, not
+  // <user>.github.io — confirmed via `gh api .../pages` returning
+  // html_url: "https://artemiop.com/zelda-wind-waker-guide/" (same setup as
+  // the sibling resident-evil-4-guide).
+  site: 'https://artemiop.com',
   base: BASE,
   // Spanish is the source language (matching the sibling RE4 guide) and
   // stays unprefixed at the root; English lives under /en/. Astro's
