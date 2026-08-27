@@ -41,6 +41,7 @@ const nextIsland = currentIndex >= 0 && currentIndex < allIslands.length - 1 ? a
       <span class="ml-auto">
         <ErrorBoundary client:load name="SetCurrentIslandButton" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
           <SetCurrentIslandButton
+            client:load
             islandId={entry.id}
             label={t('island.markCurrent')}
             currentLabel={t('island.isCurrent')}

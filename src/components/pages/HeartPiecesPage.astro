@@ -39,6 +39,7 @@ const atlasDots = (await getLocalized('atlas', locale)).map((a) => ({
     <p class="mb-6 text-sm text-muted-foreground">{t('heartPieces.note')}</p>
     <ErrorBoundary client:load name="HeartPieceChecklist" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
       <HeartPieceChecklist
+        client:load
         items={heartPieces}
         progressLabel={t('heartPieces.progress')}
         atlasDots={atlasDots}

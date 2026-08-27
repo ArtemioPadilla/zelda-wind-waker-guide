@@ -43,14 +43,14 @@ const treasure = charts.filter(isTreasure).map((c) => ({
     <section class="mb-10">
       <SubsectionHead title={t('charts.triforce')} />
       <ErrorBoundary client:load name="ChartChecklist:triforce" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
-        <ChartChecklist items={triforce} progressLabel={t('charts.triforce')} />
+        <ChartChecklist client:load items={triforce} progressLabel={t('charts.triforce')} />
       </ErrorBoundary>
     </section>
 
     <section class="mb-10">
       <SubsectionHead title={t('charts.treasure')} />
       <ErrorBoundary client:load name="ChartChecklist:treasure" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
-        <ChartChecklist items={treasure} progressLabel={t('charts.treasure')} />
+        <ChartChecklist client:load items={treasure} progressLabel={t('charts.treasure')} />
       </ErrorBoundary>
     </section>
 
