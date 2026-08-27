@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHead from '@/components/common/SectionHead.astro';
+import SubsectionHead from '@/components/common/SubsectionHead.astro';
 import { getLocalized } from '@/lib/content';
 import { useTranslations, localizedHref } from '@/i18n/utils';
 import { PILL_STYLE, type PillType } from '@/lib/pills';
@@ -11,6 +12,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 
 const islands = (await getLocalized('islands', locale)).sort((a, b) => a.data.order - b.data.order);
+const atlas = (await getLocalized('atlas', locale)).sort((a, b) => a.data.sector.localeCompare(b.data.sector));
 const acts = ['despertar', 'travesia', 'final'] as const;
 const ACT_KEY = { despertar: 'islands.act.despertar', travesia: 'islands.act.travesia', final: 'islands.act.final' } as const;
 const ACT_COLOR = { despertar: 'oklch(0.65 0.14 145)', travesia: 'oklch(0.62 0.12 220)', final: 'oklch(0.55 0.19 27)' } as const;
@@ -45,5 +47,30 @@ const ACT_COLOR = { despertar: 'oklch(0.65 0.14 145)', travesia: 'oklch(0.62 0.1
         </div>
       </section>
     ))}
+
+    <section class="mt-10">
+      <SubsectionHead title={t('islands.atlasTitle')} />
+      <p class="mb-4 text-sm text-muted-foreground">{t('islands.atlasNote')}</p>
+      <div class="ledger overflow-x-auto">
+        <table class="w-full min-w-[480px] text-sm">
+          <thead class="sr-only">
+            <tr>
+              <th scope="col">{t('islands.atlasSector')}</th>
+              <th scope="col">{t('islands.atlasName')}</th>
+              <th scope="col">{t('islands.atlasWhat')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {atlas.map((a) => (
+              <tr class="border-b border-border/70 last:border-0">
+                <td class="whitespace-nowrap p-3 align-top font-mono text-xs text-primary">{a.data.sector}</td>
+                <td class="p-3 align-top font-medium text-foreground">{a.data.name}</td>
+                <td class="p-3 align-top text-xs text-muted-foreground">{a.data.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 </BaseLayout>

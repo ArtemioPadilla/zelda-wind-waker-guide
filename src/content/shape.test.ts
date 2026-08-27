@@ -11,7 +11,7 @@ import * as yaml from 'js-yaml';
 // the guide's copy asserts (e.g. "44 Pieces of Heart").
 
 const CONTENT_DIR = join(dirname(fileURLToPath(import.meta.url)));
-const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'bosses', 'sidequests', 'postgame'];
+const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'bosses', 'sidequests', 'postgame', 'atlas'];
 
 function loadJson<T extends { id: string }>(locale: 'es' | 'en', name: string): T[] {
   return JSON.parse(readFileSync(join(CONTENT_DIR, locale, `${name}.json`), 'utf8')) as T[];
@@ -99,5 +99,13 @@ describe('content: items', () => {
   it('every item has a valid category', () => {
     const items = loadJson<{ id: string; category: string }>('es', 'items');
     for (const i of items) expect(VALID_CATEGORIES.has(i.category)).toBe(true);
+  });
+});
+
+describe('content: atlas', () => {
+  it('covers all 49 grid sectors of the Great Sea with no duplicates', () => {
+    const atlas = loadJson<{ id: string; sector: string }>('es', 'atlas');
+    expect(atlas).toHaveLength(49);
+    expect(new Set(atlas.map((a) => a.sector)).size).toBe(49);
   });
 });

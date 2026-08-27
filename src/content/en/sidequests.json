@@ -4,7 +4,9 @@
     "title": "Savage Labyrinth",
     "items": [
       "50 floors of combat under Outset Island — requires the Power Bracelets",
-      "Floor 30 hides a Triforce Chart/Shard",
+      "Floors are grouped in 5 ten-floor blocks, each pulling enemies from a different dungeon: 1-10 Dragon Roost Cavern, 11-20 Forest Haven, 21-30 Tower of the Gods, 31-40 Earth/Wind Temple, 41-50 a mix from across the game",
+      "Every 10th floor is a rest floor with an exit plus pots of hearts and rupees; floor 1 also hides a pot with 3 Fairies",
+      "Floor 30 hides a Triforce Chart/Shard — play Wind's Requiem on the Wind Crest to reveal the chest",
       "Floor 50 (HD version) rewards the Hero's Charm, which highlights hidden items on the map",
       "Dying resets you to floor 1 — go in with full hearts and a full bomb bag"
     ],
@@ -57,8 +59,12 @@
     "id": "estatuas-tingle",
     "title": "Tingle Statues (HD exclusive)",
     "items": [
-      "5 Tingle Statues hidden across different islands of the Great Sea, new to the HD version",
-      "Marked on the map once found — an extra collectible on top of the main checklist",
+      "5 Tingle Statues, new to the HD version, each hidden as a bombable chest inside a dungeon",
+      "Dragon Roost Cavern: grapple across the lava pit on the path to the boss key, then bomb the alcove",
+      "Forbidden Woods: the basement room where you found a Treasure Chart, on the way to the boss key",
+      "Tower of the Gods: ride the platforms up in the first tall round room, then look for one floating apart from the rest",
+      "Earth Temple: glide with the Deku Leaf from the bridge with two blue Bubbles to a hidden ledge",
+      "Wind Temple: in the room where Makar is first grabbed by Floormasters, bomb the pit in front of you",
       "Not required to complete the main story"
     ],
     "order": 6
