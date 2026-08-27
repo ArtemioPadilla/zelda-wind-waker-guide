@@ -98,6 +98,18 @@ const islandsSchema = z.object({
   pills: z.array(z.object({ type: z.enum(['item', 'shop', 'boss', 'info']), label: z.string() })),
 });
 
+// Great Sea atlas — the "lighter collection" alternative CLAUDE.md's TODO
+// floated for the full island roster gap: all 49 grid sectors of the sea
+// chart (a Piece of Heart / Triforce Chart location plus a one-line note),
+// not a standalone page per island like `islands`. Deliberately separate
+// from `islandsSchema` so the curated 18-entry story collection (and the
+// test asserting exactly 18 files) stays untouched.
+const atlasSchema = z.object({
+  sector: z.string(),
+  name: z.string(),
+  note: z.string(),
+});
+
 export const collections = {
   ...localizedJson('tips', tipsSchema),
   ...localizedJson('items', itemsSchema),
@@ -107,6 +119,7 @@ export const collections = {
   ...localizedJson('bosses', bossesSchema),
   ...localizedJson('sidequests', sidequestsSchema),
   ...localizedJson('postgame', postgameSchema),
+  ...localizedJson('atlas', atlasSchema),
   islands_es: defineCollection({ loader: glob({ pattern: '*.md', base: 'src/content/es/islands' }), schema: islandsSchema }),
   islands_en: defineCollection({ loader: glob({ pattern: '*.md', base: 'src/content/en/islands' }), schema: islandsSchema }),
 };

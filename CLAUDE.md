@@ -56,42 +56,52 @@ for cross-island state (never React Context across islands).
 | `rules` | `tips` | — |
 | `postgame` | `postgame` (Hero Mode / Swift Sail) | — |
 
-## TODO — deliberately scoped out for time
+## TODO — gap-closure pass (2026-08-26)
 
-This is a real, accurate, well-organized guide covering the full main-quest
-progression and both primary completionist checklists (all 44 Pieces of
-Heart, all 8 Triforce Charts), but it does **not** claim exhaustive 100%
-coverage of every one of the Great Sea's ~49 islands or every optional
-Treasure Chart. Left as follow-up work:
+The original build deliberately scoped down several areas for time (see git
+history for the original wording of this section). A follow-up pass closed
+most of them against Zelda Wiki / Zelda Dungeon Wiki / Thonky.com / Game8 /
+Hyrule Blog, cross-checking each fact against at least two independent
+sources before adding it. Status now:
 
-- **Full island roster.** Only ~30 of the Great Sea's ~49 islands are named
-  anywhere in the content (mostly via Heart Piece / Chart locations); the
-  `islands` collection itself covers 18 curated entries (the 6 main
-  dungeons + Forsaken Fortress twice + Hyrule Castle + hub/sidequest
-  islands), not a standalone page per island. A future pass could add an
-  `islands` entry (or a lighter "Great Sea atlas" collection) for every
-  remaining minor island (reef/rock/isle-only stops with no dedicated
-  content here).
-- **Full Treasure Chart list.** The game has ~40 non-Triforce Treasure
-  Charts; `charts.json` covers the 10 most notable ones (tied to dungeon
-  drops and named sidequest moments already verified against research
-  sources) rather than all of them — most of the rest just lead to a pile of
-  rupees and add little walkthrough value.
-- **Per-chart shard pairing.** Community sources conflict on the exact
-  chart-N → shard-island-N pairing for the HD remaster's renumbering (GC vs.
-  HD renumbered them differently, and even reputable guides disagree with
-  each other on some entries). Rather than assert an unverified specific
-  pairing as fact, each Triforce Chart entry's `shardIsland` field
-  intentionally says "Tingle deciphers it and marks the dig island" instead
-  of naming one — the chart's own island and acquisition method are the
-  verified, load-bearing facts.
-- **Nintendo Gallery figurines.** The full game has 134 possible figurines;
-  `figurines.json` covers 12 notable, well-documented ones as a sample
-  lookup table (mirroring the RE4 guide's `gems.json` scope), not the full
-  roster.
-- **Tingle Statues (HD).** Mentioned as a sidequest card, but the 5
-  individual statue locations aren't itemized — HD-exclusive content with
-  comparatively thin, sometimes-conflicting documentation.
-- **Savage Labyrinth floor-by-floor enemy list.** Covered at the
-  "what you get / when to attempt it" level, not a floor-1-through-50
-  enemy-composition breakdown.
+- **Full island roster — closed.** Added a new `atlas` collection (49
+  entries per locale, one per grid sector of the sea chart, sourced from
+  Game8's Sea Chart breakdown) rendered as a new "Great Sea atlas" section
+  at the bottom of `/islands/`. This is the "lighter collection" alternative
+  the original TODO floated, not a standalone page per island — the
+  curated 18-entry `islands` collection (main-quest chapters) is untouched,
+  still exactly 18 files, still the primary walkthrough.
+- **Full Treasure Chart list — closed.** `charts.json` now covers all 46
+  Treasure Charts (the original GameCube 1-41 plus HD-exclusive 42-46,
+  cross-checked against Thonky's and Game8's independent chart tables, with
+  chart 45's Joy-Pendant acquisition confirmed via Hyrule Blog). Also fixed
+  a pre-existing inaccuracy found during this research: the
+  `treasure-tower-of-the-gods` entry had conflated two separate charts
+  (the actual Tower of the Gods chart leads only to Pawprint Isle; the
+  Forest Haven Piece of Heart is a *different* chart, from Kamo's
+  full-moon-photograph errand on Windfall — now its own
+  `treasure-chart-31` entry).
+- **Tingle Statues (HD) — closed.** All 5 dungeon locations (Dragon Roost
+  Cavern, Forbidden Woods, Tower of the Gods, Earth Temple, Wind Temple)
+  are now itemized in the `estatuas-tingle` sidequest card.
+- **Nintendo Gallery figurines — expanded, not exhaustive.** Grew
+  `figurines.json` from 12 to 27 well-documented entries (added Windfall
+  NPCs tied to verifiable photo spots, the 4 remaining non-Ganon/Gohma
+  dungeon bosses, and the 5 Legendary-Pictograph purchases from Lenzo). The
+  full game still has 134 possible figurines; most of the rest are generic
+  enemy-type figurines (Bokoblin, ChuChu, etc.) unlocked by kill counts
+  rather than a specific place, which don't fit this table's
+  name/chapter/location shape well — left as a still-open gap.
+- **Savage Labyrinth — improved, not floor-by-floor.** The `laberinto-salvaje`
+  sidequest card now names the 5 ten-floor blocks and which dungeon each
+  pulls enemies from, plus the every-10th-floor rest-floor pattern (all
+  well-corroborated across sources). A literal floor-1-through-50
+  enemy-composition table is still not included — it adds little
+  walkthrough value over the block-level summary and the sourcing for
+  individual encounters gets thin past the well-known milestones.
+- **Per-chart shard pairing — intentionally still unresolved.** Unchanged
+  from the original design decision, not a time-constraint gap: community
+  sources still conflict on the exact chart-N → shard-island-N pairing for
+  the HD remaster's renumbering, so each Triforce Chart's `shardIsland`
+  field still says "Tingle deciphers it and marks the dig island" rather
+  than asserting an unverified specific pairing as fact.

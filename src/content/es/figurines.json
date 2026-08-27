@@ -10,5 +10,20 @@
   { "id": "fig-zunari", "name": "Zunari", "chapter": "1-3", "location": "Fotografíalo en su puesto de fruta de Isla Windfall" },
   { "id": "fig-orca", "name": "Orca", "chapter": "1-1", "location": "Fotografíalo durante el entrenamiento con la espada en Isla Initial" },
   { "id": "fig-grandma", "name": "Abuela de Link", "chapter": "1-1", "location": "Fotografíala en su choza de Isla Initial" },
-  { "id": "fig-minenco", "name": "Minenco", "chapter": "2-8", "location": "Fotografíala escondida bajo el agua en Isla Cinco Estrellas" }
+  { "id": "fig-minenco", "name": "Minenco", "chapter": "2-8", "location": "Fotografíala escondida bajo el agua en Isla Cinco Estrellas" },
+  { "id": "fig-sturgeon", "name": "Sturgeon", "chapter": "1-1", "location": "Fotografíalo en el piso de arriba de la casa de Orca en Isla Initial, mientras camina de un lado a otro escribiendo" },
+  { "id": "fig-anton", "name": "Anton", "chapter": "1-3", "location": "Fotografíalo repartiendo el correo en Isla Windfall — uno de los encargos de Lenzo para la Caja de Pictografías Deluxe" },
+  { "id": "fig-gossack", "name": "Gossack", "chapter": "1-3", "location": "Fotografíalo llevándose un buen susto dentro del bar de Isla Windfall — el otro encargo de Lenzo" },
+  { "id": "fig-doc-bandam", "name": "Doc Bandam", "chapter": "1-3", "location": "Fotografíalo preparando pociones en su tienda de zumo de gelatina Chu, en Isla Windfall" },
+  { "id": "fig-salvatore", "name": "Salvatore", "chapter": "2-8", "location": "Fotografíalo en su carpa del minijuego Sinking Ships, en Isla Windfall" },
+  { "id": "fig-mrs-marie", "name": "Sra. Marie", "chapter": "2-8", "location": "Fotografíala dentro de la escuela de Isla Windfall" },
+  { "id": "fig-kalle-demos", "name": "Kalle Demos", "chapter": "1-5", "location": "Fotografíalo durante el combate contra el jefe del Bosque Prohibido" },
+  { "id": "fig-jalhalla", "name": "Jalhalla", "chapter": "2-5", "location": "Fotografíalo durante el combate contra el jefe del Templo del Viento" },
+  { "id": "fig-molgera", "name": "Molgera", "chapter": "2-4", "location": "Fotografíalo durante el combate contra el jefe del Templo de la Tierra" },
+  { "id": "fig-puppet-ganon", "name": "Ganon Titiritero", "chapter": "3-3", "location": "Fotografíalo durante el combate contra Ganon Titiritero en la Torre de Ganon" },
+  { "id": "fig-jabun", "name": "Jabun", "chapter": "2-3", "location": "Cómprale su Pictografía Legendaria a Lenzo en Isla Windfall (150 rupias, HD) — solo aparece en luna menguante" },
+  { "id": "fig-laruto", "name": "Laruto", "chapter": "2-3", "location": "Cómprale su Pictografía Legendaria a Lenzo en Isla Windfall (150 rupias, HD) — solo aparece en cuarto creciente" },
+  { "id": "fig-fado", "name": "Fado", "chapter": "2-3", "location": "Cómprale su Pictografía Legendaria a Lenzo en Isla Windfall (150 rupias, HD) — solo aparece en luna creciente" },
+  { "id": "fig-great-fairy", "name": "Gran Hada", "chapter": "2-6", "location": "Cómprale su Pictografía Legendaria a Lenzo en Isla Windfall (150 rupias, HD) — solo aparece en luna gibosa menguante" },
+  { "id": "fig-king-of-hyrule", "name": "Rey de Hyrule", "chapter": "2-2", "location": "Cómprale su Pictografía Legendaria a Lenzo en Isla Windfall (150 rupias, HD) — solo aparece en luna gibosa creciente" }
 ]

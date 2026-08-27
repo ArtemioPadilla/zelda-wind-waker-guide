@@ -4,7 +4,9 @@
     "title": "Laberinto Salvaje",
     "items": [
       "50 plantas de combate bajo Isla Initial — requiere los Brazaletes de Fuerza",
-      "La planta 30 esconde un Trozo/Carta del Triforce",
+      "Las plantas se agrupan en 5 bloques de diez, cada uno con enemigos de una mazmorra distinta: 1-10 Caverna de Cresta de Dragón, 11-20 Refugio del Bosque, 21-30 Torre de los Dioses, 31-40 Templo de la Tierra/Templo del Viento, 41-50 una mezcla de todo el juego",
+      "Cada décima planta es de descanso, con una salida y macetas de corazones y rupias; la planta 1 también esconde una maceta con 3 Hadas",
+      "La planta 30 esconde un Trozo/Carta del Triforce — toca el Réquiem del Viento en la Cruz de Viento para revelar el cofre",
       "La planta 50 (versión HD) entrega el Amuleto del Héroe, que resalta los objetos ocultos en el mapa",
       "Cada intento reinicia desde la planta 1 si mueres — ve con corazones y bombas al máximo"
     ],
@@ -57,8 +59,12 @@
     "id": "estatuas-tingle",
     "title": "Estatuillas de Tingle (exclusivo HD)",
     "items": [
-      "5 estatuillas de Tingle escondidas por distintas islas del Gran Mar, novedad de la versión HD",
-      "Se marcan en el mapa una vez encontradas — sirven como coleccionable adicional",
+      "5 estatuillas, novedad de la versión HD, cada una escondida en un cofre que aparece al bombardear una zona dentro de una mazmorra",
+      "Caverna de Cresta de Dragón: engánchate con el Garfio sobre el pozo de lava camino a la llave de jefe y bombardea la hornacina",
+      "Bosque Prohibido: la sala del sótano donde encontraste una Carta del Tesoro, de camino a la llave de jefe",
+      "Torre de los Dioses: sube en las plataformas flotantes de la primera sala alta y redonda, luego busca una que flote separada del resto",
+      "Templo de la Tierra: usa la Hoja Deku para planear desde el puente con dos Burbujas azules hasta una cornisa escondida",
+      "Templo del Viento: en la sala donde los Amos del Suelo atrapan a Makar por primera vez, lanza una bomba al pozo frente a ti",
       "No son necesarias para completar la historia principal"
     ],
     "order": 6
