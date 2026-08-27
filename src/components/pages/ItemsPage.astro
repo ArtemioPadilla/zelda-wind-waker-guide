@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHead from '@/components/common/SectionHead.astro';
 import SubsectionHead from '@/components/common/SubsectionHead.astro';
+import ItemUpgradeBars from './ItemUpgradeBars.astro';
 import { getLocalized } from '@/lib/content';
 import { useTranslations } from '@/i18n/utils';
 import type { Locale } from '@/i18n/ui';
@@ -44,6 +45,9 @@ const categories = ['weapons', 'tools', 'sailing', 'upgrades'] as const;
                   <p class="font-mono text-[10px] uppercase tracking-wide text-muted-foreground">{t('items.location')}</p>
                   <p class="text-xs text-foreground">{w.data.location}{w.data.chapter ? ` · ${w.data.chapter}` : ''}</p>
                 </div>
+                {w.data.upgradeStages ? (
+                  <ItemUpgradeBars stages={w.data.upgradeStages} unit={w.data.upgradeUnit} label={t('items.upgradeProgression')} />
+                ) : null}
               </div>
             ))}
           </div>
