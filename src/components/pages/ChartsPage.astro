@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHead from '@/components/common/SectionHead.astro';
+import SubsectionHead from '@/components/common/SubsectionHead.astro';
+import ErrorBoundary from '@/components/islands/ErrorBoundary';
+import ChartChecklist from '@/components/islands/ChartChecklist';
+import { getLocalized } from '@/lib/content';
+import { useTranslations } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const charts = await getLocalized('charts', locale);
+const figurines = await getLocalized('figurines', locale);
+
+type ChartEntry = (typeof charts)[number];
+const isTriforce = (
+  c: ChartEntry,
+): c is ChartEntry & { data: Extract<ChartEntry['data'], { kind: 'triforce' }> } => c.data.kind === 'triforce';
+const isTreasure = (
+  c: ChartEntry,
+): c is ChartEntry & { data: Extract<ChartEntry['data'], { kind: 'treasure' }> } => c.data.kind === 'treasure';
+
+const triforce = charts.filter(isTriforce).map((c) => ({
+  id: c.id,
+  name: c.data.name,
+  detail: `${c.data.chartIsland} → ${c.data.shardIsland} · ${c.data.method}`,
+}));
+
+const treasure = charts.filter(isTreasure).map((c) => ({
+  id: c.id,
+  name: c.data.name,
+  detail: `${c.data.island} · ${c.data.reward}${c.data.note ? ' · ' + c.data.note : ''}`,
+}));
+---
+<BaseLayout title={`${t('charts.title')} · ${t('site.name')}`} lang={locale}>
+  <main id="main" class="mx-auto max-w-4xl px-5 py-14">
+    <SectionHead level="h1" title={t('charts.title')} tight />
+    <p class="mb-8 text-sm text-muted-foreground">{t('charts.note')}</p>
+
+    <section class="mb-10">
+      <SubsectionHead title={t('charts.triforce')} />
+      <ErrorBoundary client:load name="ChartChecklist:triforce" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
+        <ChartChecklist items={triforce} progressLabel={t('charts.triforce')} />
+      </ErrorBoundary>
+    </section>
+
+    <section class="mb-10">
+      <SubsectionHead title={t('charts.treasure')} />
+      <ErrorBoundary client:load name="ChartChecklist:treasure" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
+        <ChartChecklist items={treasure} progressLabel={t('charts.treasure')} />
+      </ErrorBoundary>
+    </section>
+
+    <section>
+      <SubsectionHead title={t('charts.figurinesTitle')} />
+      <div class="ledger overflow-x-auto">
+        <table class="w-full min-w-[480px] text-sm">
+          <thead class="sr-only">
+            <tr>
+              <th scope="col">{t('charts.figurineName')}</th>
+              <th scope="col">{t('charts.figurineChapter')}</th>
+              <th scope="col">{t('charts.figurineLocation')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {figurines.map((g) => (
+              <tr class="border-b border-border/70 last:border-0">
+                <td class="p-3 align-top font-medium text-foreground">{g.data.name}</td>
+                <td class="whitespace-nowrap p-3 align-top font-mono text-xs text-primary">{g.data.chapter}</td>
+                <td class="p-3 align-top text-xs text-muted-foreground">{g.data.location}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,371 @@
+@import "tailwindcss";
+
+/* Self-hosted (not Google Fonts) so the service worker precaches the woff2
+ * files like any other static asset — the guide must keep its brand
+ * typography offline, not fall back to system fonts. Variable-weight builds
+ * cover every font-weight the site uses from one file per family/style, so
+ * there's no per-weight byte cost to worry about.
+ *
+ * Fredoka (rounded, jaunty display face) + Quicksand (rounded, friendly body
+ * text) evoke the cel-shaded, storybook-toon look of Wind Waker's own title
+ * card and HUD — a deliberate departure from a "realistic fantasy serif"
+ * treatment, matching this game's art direction rather than a generic
+ * "Zelda" one. Space Mono (nautical chart / captain's-log labels) stands in
+ * for the sibling RE4 guide's typewriter mono, for the same reason: labels,
+ * pills, and the nav read like hand-stamped chart annotations. */
+@import "@fontsource-variable/fredoka/wght.css";
+@import "@fontsource-variable/quicksand/wght.css";
+@import "@fontsource/space-mono/latin-400.css";
+@import "@fontsource/space-mono/latin-700.css";
+
+/* CSS-only animation utilities — zero JS runtime cost. Activates on element
+ * mount via CSS keyframes. See https://rombo.co/tailwind/ for the full API. */
+@plugin "tailwindcss-motion";
+
+/* Native cross-document View Transitions — Baseline Newly Available Oct 2025.
+ * No-op in older browsers; supporting browsers get cross-page fade-through. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* Dark applies under `.dark` — but NOT inside a `.light` island. This lets a
+   `.light` container force true light tokens even when nested under
+   `html.dark` (and vice versa is unnecessary — `.dark` is the toggled root
+   state, `.light` is the escape hatch). */
+@variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
+
+@layer base {
+  :root,
+  .light {
+    /* Tells native controls (selects, scrollbars, inputs) to render in
+       light mode when under this scope, and is what `light-dark()` reads
+       to pick its first argument for every var() below. */
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  :root {
+    /* Palette: the Great Sea. Pale, sun-bleached sky-and-sail cream in light
+       mode; deep night-ocean navy-teal in dark mode — every neutral carries
+       a cool blue hue (~200-250) instead of true gray, so the whole site
+       reads as "open water under a big sky" rather than a generic dashboard.
+       Deliberately NOT RE4's warm amber/leather hue family (55-80): this is
+       a cool-hued, high-chroma-accent palette built around Triforce gold
+       (hue ~88-92) against ocean blue, verified for WCAG AA contrast with a
+       standalone OKLCH→sRGB calculator (light primary-as-text measured
+       5.22:1 on --background; every other themed text/surface pair ≥5.6:1;
+       full pair list in docs/decisions/2026-08-26-palette-contrast.md). */
+    --background: light-dark(oklch(0.95 0.025 220), oklch(0.16 0.045 240));
+    --foreground: light-dark(oklch(0.24 0.05 250), oklch(0.92 0.03 200));
+    --card: light-dark(oklch(0.99 0.012 210), oklch(0.205 0.05 235));
+    --card-foreground: light-dark(oklch(0.24 0.05 250), oklch(0.92 0.03 200));
+    --popover: light-dark(oklch(0.99 0.012 210), oklch(0.205 0.05 235));
+    --popover-foreground: light-dark(oklch(0.24 0.05 250), oklch(0.92 0.03 200));
+    /* Brand: Triforce gold. Light-mode L held at 0.50 (not the more
+       "golden-looking" 0.55-0.6) so --primary-as-text clears WCAG AA 4.5:1
+       against --background — 0.55 measured 4.22:1, just under. Bright gold
+       in dark mode reads as glowing against the deep-sea canvas. */
+    --primary: light-dark(oklch(0.5 0.16 88), oklch(0.8 0.17 92));
+    --primary-foreground: light-dark(oklch(0.99 0 0), oklch(0.2 0.03 90));
+    --secondary: light-dark(oklch(0.9 0.03 215), oklch(0.27 0.04 220));
+    --secondary-foreground: light-dark(oklch(0.24 0.05 250), oklch(0.92 0.03 200));
+    --muted: light-dark(oklch(0.91 0.02 220), oklch(0.23 0.04 235));
+    --muted-foreground: light-dark(oklch(0.45 0.04 240), oklch(0.68 0.035 210));
+    --accent: light-dark(oklch(0.88 0.05 90), oklch(0.3 0.06 90));
+    --accent-foreground: light-dark(oklch(0.3 0.08 88), oklch(0.9 0.06 90));
+    /* Ganon-red — danger/boss accent. */
+    --destructive: light-dark(oklch(0.5 0.2 25), oklch(0.66 0.19 25));
+    --destructive-foreground: light-dark(oklch(0.99 0 0), oklch(0.145 0.02 25));
+    --border: light-dark(oklch(0.85 0.03 220), oklch(0.32 0.04 230));
+    --input: light-dark(oklch(0.85 0.03 220), oklch(0.34 0.04 230));
+    --ring: light-dark(oklch(0.55 0.14 88), oklch(0.8 0.17 92));
+    /* Island/chart-pill semantic colors (shop/item pills — boss uses
+       --destructive, info uses --muted-foreground). Deep sea-teal for
+       "shop" (Beedle's boat), heart-green for "item" pills — same green
+       family as a heart-container fill, distinct hue from the gold brand
+       so a Triforce pill and a Heart pill never read as the same thing. */
+    --pill-shop: light-dark(oklch(0.42 0.1 220), oklch(0.74 0.1 215));
+    --pill-item: light-dark(oklch(0.42 0.13 140), oklch(0.75 0.16 130));
+    --radius: 0.75rem;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-pill-shop: var(--pill-shop);
+  --color-pill-item: var(--pill-item);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@theme {
+  /* Type system: Fredoka (rounded display) for headings, Quicksand (rounded
+     body) for copy, Space Mono for labels/pills/nav — see the @import
+     comment above for the rationale. */
+  --font-sans: 'Quicksand Variable', 'Trebuchet MS', sans-serif;
+  --font-display: 'Fredoka Variable', 'Trebuchet MS', sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+@layer base {
+  body {
+    position: relative;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-color: var(--background);
+  }
+  /* Atmosphere: a horizon-glow of gold near the top (sunlight on open water)
+     plus a cooler teal wash lower-right (deep water) — dark mode only
+     (html.dark, toggled by src/stores/theme.ts), so light/parchment-sky mode
+     stays clean and airy. */
+  .dark body {
+    background-image:
+      radial-gradient(ellipse 1300px 650px at 50% -120px, color-mix(in oklch, var(--primary) 12%, transparent), transparent 62%),
+      radial-gradient(ellipse 1000px 600px at 92% 20%, oklch(0.55 0.1 210 / 12%), transparent 58%);
+    background-attachment: fixed;
+  }
+  /* A whisper of water-ripple texture over the whole page — fixed to the
+     viewport so it reads as a material the screen is made of, not
+     decoration on the content. Barely-there on purpose. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  /* Golden horizon-glow used as hero atmosphere (home page header). */
+  .glow-brand {
+    background:
+      radial-gradient(60% 55% at 50% 0%, color-mix(in oklch, var(--primary) 22%, transparent), transparent 70%);
+  }
+  /* The sail panel — this site's one card treatment, used everywhere (tip
+     cards, item rows, island links, boss cards, checklists). A soft corner
+     sheen + inset top highlight read as canvas catching sunlight, instead of
+     a flat bordered <div>. Corners are rounder than a "leather ledger" card
+     would be — a deliberate cel-shaded, toy-like softness. */
+  .panel {
+    position: relative;
+    background: var(--card);
+    background-image: radial-gradient(140% 100% at 100% 0%, color-mix(in oklch, var(--primary) 6%, transparent), transparent 60%);
+    border: 1px solid var(--border);
+    /* Optional colored left accent (tip cards, act-grouped island rows) —
+       set `style="--panel-accent: var(--primary)"` (or any color) on the
+       element; defaults to the regular border color so it's a no-op. */
+    border-left: 3px solid var(--panel-accent, var(--border));
+    border-radius: var(--radius-lg);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklch, white 6%, transparent),
+      0 1px 2px color-mix(in oklch, black 16%, transparent);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  a.panel:hover, .panel[data-interactive]:hover {
+    border-color: color-mix(in oklch, var(--primary) 55%, var(--border));
+  }
+  /* The chart-table — a faint dotted-grid "nautical chart" texture behind
+     data tables (items/figurines), ported conceptually from a captain's
+     chart-table lining. */
+  .ledger {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: var(--card);
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in oklch, var(--foreground) 3%, transparent) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, color-mix(in oklch, var(--foreground) 3%, transparent) 0 1px, transparent 1px 34px);
+  }
+}
+
+/* Base UI Toast stacking. Toasts are absolutely positioned inside the fixed
+ * Viewport and stacked with the --toast-index / --toast-offset-y variables
+ * Base UI sets on each Root. On hover/focus (data-expanded) they fan out. */
+@layer components {
+  .bui-toast {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 100%;
+    z-index: calc(1000 - var(--toast-index));
+    transform:
+      translateX(var(--toast-swipe-movement-x))
+      translateY(calc(var(--toast-swipe-movement-y) + var(--toast-index) * -18px))
+      scale(calc(1 - 0.04 * var(--toast-index)));
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+  .bui-toast[data-expanded] {
+    transform:
+      translateX(var(--toast-swipe-movement-x))
+      translateY(calc(var(--toast-offset-y) * -1 + var(--toast-swipe-movement-y)));
+  }
+  .bui-toast[data-starting-style],
+  .bui-toast[data-ending-style] {
+    opacity: 0;
+    transform: translateY(150%);
+  }
+  .bui-toast[data-index='3'],
+  .bui-toast[data-index='4'] {
+    opacity: 0;
+  }
+}
+
+/* The Wind Waker's own little conductor's flourish — a small CSS-only
+   glinting sparkle used next to the brand name (nav + hero) and at the head
+   of every section, playing the same "signature mark" role as the sibling
+   RE4 guide's flame, but built from the King of Red Lions' sail-triangle +
+   a Triforce glint instead of fire (fire doesn't fit a sea-and-sail game). */
+@layer utilities {
+  .flame {
+    display: inline-block;
+    width: 12px;
+    height: 14px;
+    position: relative;
+    flex: none;
+  }
+  .flame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--primary) 0%, color-mix(in oklch, var(--primary) 55%, var(--pill-shop)) 100%);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    animation: ww-sail-bob 3.4s ease-in-out infinite;
+    transform-origin: 50% 100%;
+  }
+  .flame::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: #fff8d8;
+    border-radius: 1px;
+    transform: translateX(-50%) rotate(45deg);
+    opacity: 0.9;
+    animation: ww-glint 2.1s ease-in-out infinite;
+  }
+}
+@keyframes ww-sail-bob {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg); }
+}
+@keyframes ww-glint {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) rotate(45deg) scale(0.8); }
+  50% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flame::before, .flame::after { animation: none; }
+}
+
+/* Staggered hero entrance — CSS-only, respects reduced-motion. */
+@keyframes ww-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ww-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+@keyframes ww-spin-slow {
+  to { transform: rotate(360deg); }
+}
+.rise {
+  animation: ww-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.float-slow { animation: ww-float 7s ease-in-out infinite; }
+.spin-slow { animation: ww-spin-slow 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .rise, .float-slow, .spin-slow { animation: none; }
+}
+
+/* Island walkthrough markdown (rendered via <Content />). No typography
+   plugin in this lean scaffold — hand-rolled to match the design tokens.
+   h2 mirrors a small-caps chart-label with a leading rule; blockquote is a
+   "captain's log margin note" — used for both ⚠️ warnings and 💡 tips, the
+   emoji already carries the tone so the box itself stays one consistent
+   gold-on-parchment note rather than a jumpy red/green/blue system. */
+.prose-guide {
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+.prose-guide h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.85rem 0 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.prose-guide h2::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: color-mix(in oklch, var(--primary) 50%, transparent);
+}
+.prose-guide h2:first-child { margin-top: 0; }
+.prose-guide p { margin-bottom: 0.9rem; }
+.prose-guide p:last-child { margin-bottom: 0; }
+.prose-guide strong { color: var(--foreground); font-weight: 700; }
+.prose-guide em { color: var(--muted-foreground); }
+.prose-guide ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.9rem; }
+.prose-guide li { margin-bottom: 0.4rem; }
+.prose-guide li::marker { color: var(--primary); }
+.prose-guide blockquote {
+  margin: 1rem 0;
+  padding: 0.75rem 1.1rem;
+  border: 1px dashed color-mix(in oklch, var(--primary) 45%, transparent);
+  background: color-mix(in oklch, var(--primary) 6%, var(--card));
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+.prose-guide blockquote p:last-child { margin-bottom: 0; }

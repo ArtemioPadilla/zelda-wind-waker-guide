@@ -1,0 +1,23 @@
+[
+  { "id": "espada-heroes", "name": "Hero's Sword", "category": "weapons", "location": "Closet in Link's house, Outset Island", "chapter": "1-1", "essential": true },
+  { "id": "escudo-madera", "name": "Hero's Shield", "category": "weapons", "location": "Gift from Grandma after Orca's sword training, Outset Island", "chapter": "1-1", "essential": true },
+  { "id": "bombas", "name": "Bombs", "category": "weapons", "location": "Gift from Grandma when you return from the 1st Forsaken Fortress", "chapter": "1-2", "essential": true },
+  { "id": "arco", "name": "Bow", "category": "weapons", "location": "Dragon Roost Cavern, right before Gohma's room", "chapter": "1-4", "essential": true, "notes": "Required for the Gohma fight." },
+  { "id": "boomerang", "name": "Boomerang", "category": "weapons", "location": "Main room of the Forbidden Woods", "chapter": "1-5", "essential": true, "notes": "Cuts Kalle Demos's vines and stuns enemies at range." },
+  { "id": "escudo-espejo", "name": "Mirror Shield", "category": "weapons", "location": "Earth Temple", "chapter": "2-4", "essential": true, "notes": "Reflects light — stuns Jalhalla and Puppet Ganon." },
+  { "id": "martillo-craneo", "name": "Skull Hammer", "category": "weapons", "location": "2nd Forsaken Fortress, chest that appears after defeating Phantom Ganondorf", "chapter": "2-1", "essential": true },
+  { "id": "flechas-fuego-hielo", "name": "Fire and Ice Arrows", "category": "weapons", "location": "Mother and Child Isles — gift from the Fairy Queen", "chapter": "2-5", "notes": "Requires the Ballad of Gales (Wind Temple) to fly there." },
+  { "id": "gancho", "name": "Grappling Hook", "category": "tools", "location": "Medli gives it to you at the top of Dragon Roost Cavern", "chapter": "1-4", "essential": true },
+  { "id": "hoja-deku", "name": "Deku Leaf", "category": "tools", "location": "The Great Deku Tree, Forest Haven", "chapter": "1-5", "essential": true, "notes": "Glides long distances; blows sails to boost the boat." },
+  { "id": "garfio", "name": "Hookshot", "category": "tools", "location": "Wind Temple", "chapter": "2-5", "essential": true },
+  { "id": "botas-hierro", "name": "Iron Boots", "category": "tools", "location": "Hidden cave on Ice Ring Isle", "chapter": "2-3", "essential": true },
+  { "id": "brazaletes-fuerza", "name": "Power Bracelets", "category": "tools", "location": "2nd Forsaken Fortress, treasure room", "chapter": "2-1", "essential": true, "notes": "Lets you lift heavy boulders and statues." },
+  { "id": "telescopio", "name": "Telescope", "category": "tools", "location": "Grandma's house, Outset Island", "chapter": "1-1" },
+  { "id": "caja-pictografias-deluxe", "name": "Deluxe Picto Box", "category": "tools", "location": "2nd Forsaken Fortress — upgraded by Lenzo on Windfall Island", "chapter": "2-1" },
+  { "id": "batuta-vientos", "name": "Wind Waker", "category": "sailing", "location": "Gift from the three forest fairies, Forest Haven", "chapter": "1-5", "essential": true },
+  { "id": "rey-cabo-rojo", "name": "The King of Red Lions", "category": "sailing", "location": "Joins you as soon as you leave the 1st Forsaken Fortress", "chapter": "1-2", "essential": true },
+  { "id": "canon", "name": "Cannon", "category": "sailing", "location": "Bought from Beedle's shop ship (200 rupees) once you find its chart", "chapter": "2-3" },
+  { "id": "carcaj-mas", "name": "Quiver+", "category": "upgrades", "location": "Great Fairies — raises arrow capacity (30 → 60 → 99)", "chapter": "2-6" },
+  { "id": "bolsa-bombas-mas", "name": "Bomb Bag+", "category": "upgrades", "location": "Great Fairies — raises bomb capacity (30 → 60 → 99)", "chapter": "2-6" },
+  { "id": "billetera-mas", "name": "Wallet+", "category": "upgrades", "location": "Bought from Tingle on Rock Spire Isle — raises the rupee cap (200 → 500 → 1,000)", "chapter": "2-6" }
+]

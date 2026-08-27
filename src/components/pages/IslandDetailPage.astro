@@ -1,0 +1,71 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ErrorBoundary from '@/components/islands/ErrorBoundary';
+import SetCurrentIslandButton from '@/components/islands/SetCurrentIslandButton';
+import { useTranslations, localizedHref } from '@/i18n/utils';
+import { getLocalized } from '@/lib/content';
+import { PILL_STYLE, type PillType } from '@/lib/pills';
+import type { Locale } from '@/i18n/ui';
+
+interface Props {
+  locale: Locale;
+  entry: CollectionEntry<'islands_es'> | CollectionEntry<'islands_en'>;
+}
+const { locale, entry } = Astro.props;
+const t = useTranslations(locale);
+const { Content } = await render(entry);
+
+// An island is read sequentially during a playthrough — offer prev/next so
+// finishing one doesn't require a trip back to the index every time.
+const allIslands = (await getLocalized('islands', locale)).sort((a, b) => a.data.order - b.data.order);
+const currentIndex = allIslands.findIndex((c) => c.id === entry.id);
+const prevIsland = currentIndex > 0 ? allIslands[currentIndex - 1] : null;
+const nextIsland = currentIndex >= 0 && currentIndex < allIslands.length - 1 ? allIslands[currentIndex + 1] : null;
+---
+<BaseLayout title={`${entry.data.number} · ${entry.data.title} · ${t('site.name')}`} lang={locale}>
+  <main id="main" class="mx-auto max-w-3xl px-5 py-14">
+    <a href={localizedHref(locale, '/islands/')} class="mb-6 inline-block font-mono text-xs text-muted-foreground hover:text-primary">
+      {t('island.back')}
+    </a>
+
+    <div class="mb-2 flex flex-wrap items-center gap-3">
+      <span class="font-display text-2xl font-bold text-primary">{entry.data.number}</span>
+      <h1 class="font-display text-2xl font-semibold text-foreground">{entry.data.title}</h1>
+    </div>
+
+    <div class="mb-6 flex flex-wrap items-center gap-2">
+      {entry.data.pills.map((p: { type: PillType; label: string }) => (
+        <span class={`rounded-full border px-2.5 py-0.5 font-mono text-[11px] ${PILL_STYLE[p.type]}`}>{p.label}</span>
+      ))}
+      <span class="ml-auto">
+        <ErrorBoundary client:load name="SetCurrentIslandButton" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
+          <SetCurrentIslandButton
+            islandId={entry.id}
+            label={t('island.markCurrent')}
+            currentLabel={t('island.isCurrent')}
+          />
+        </ErrorBoundary>
+      </span>
+    </div>
+
+    <article class="prose-guide max-w-none">
+      <Content />
+    </article>
+
+    <nav aria-label={t('island.prevNextLabel')} class="mt-10 flex items-center gap-3 border-t border-border pt-6">
+      {prevIsland ? (
+        <a href={localizedHref(locale, `/islands/${prevIsland.id}/`)} class="panel min-w-0 flex-1 p-3 text-sm">
+          <span class="block font-mono text-[10px] uppercase tracking-wide text-muted-foreground">{t('island.prev')}</span>
+          <span class="block truncate text-foreground">{prevIsland.data.number} · {prevIsland.data.title}</span>
+        </a>
+      ) : <span class="flex-1"></span>}
+      {nextIsland ? (
+        <a href={localizedHref(locale, `/islands/${nextIsland.id}/`)} class="panel min-w-0 flex-1 p-3 text-right text-sm">
+          <span class="block font-mono text-[10px] uppercase tracking-wide text-muted-foreground">{t('island.next')}</span>
+          <span class="block truncate text-foreground">{nextIsland.data.number} · {nextIsland.data.title}</span>
+        </a>
+      ) : <span class="flex-1"></span>}
+    </nav>
+  </main>
+</BaseLayout>

@@ -1,0 +1,11 @@
+[
+  { "id": "modo-heroe", "kind": "unlock", "name": "Hero Mode", "how": "Beat the game once. Available as a new save: hearts no longer drop from enemies and damage taken is doubled.", "order": 1 },
+  { "id": "vela-rapida", "kind": "unlock", "name": "Swift Sail", "how": "Beat the game once. The King of Red Lions always sails at max speed without holding any button down.", "order": 2 },
+  { "id": "galeria-post-creditos", "kind": "unlock", "name": "Extra credits content", "how": "Finish the game to see additional artwork and scenes during the closing credits.", "order": 3 },
+  { "id": "route-1", "kind": "route", "step": 1, "title": "Clear the main dungeon before chasing hearts", "body": "Each dungeon usually unlocks a new tool (Grappling Hook, Hookshot, Mirror Shield) that opens up parts of the Great Sea you couldn't reach before — don't get stuck on a Piece of Heart that seems out of reach yet." },
+  { "id": "route-2", "kind": "route", "step": 2, "title": "Get the Wallet+ as soon as you can", "body": "With a 200-rupee cap you can't even afford one Triforce Chart. Visit Tingle on Rock Spire Isle the moment you have rupees to spare." },
+  { "id": "route-3", "kind": "route", "step": 3, "title": "Buy the Cannon early", "body": "Many Pieces of Heart and Charts depend on sinking warships or hitting distant switches — the Cannon pays for itself." },
+  { "id": "route-4", "kind": "route", "step": 4, "title": "Save the Savage Labyrinth for last", "body": "With the Master Sword at full power and hearts maxed out, all 50 floors go a lot faster." },
+  { "id": "route-5", "kind": "route", "step": 5, "title": "Save the Triforce Charts for the second stretch", "body": "You can't enter Ganon's Tower without all eight — but you don't have to decipher every one before the Earth and Wind Temples either; let the story and the charts progress together." },
+  { "id": "route-6", "kind": "route", "step": 6, "title": "Chase 100% on a Hero Mode replay", "body": "The second playthrough is the best time to go for full completion: you already know every island and every chart, so you can focus on the challenge instead." }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "wind-waker-canciones",
+    "title": "Domina la Batuta de los Vientos cuanto antes",
+    "body": "Es tu herramienta más usada del juego: el Réquiem del Viento cambia la dirección del viento, la Balada de las Tempestades te teletransporta y la Melodía de Mando activa estatuas. Apréndelas en cuanto las consigas.",
+    "order": 1
+  },
+  {
+    "id": "sube-la-billetera",
+    "title": "Sube la billetera antes de acumular rupias",
+    "body": "Empiezas con capacidad para solo 200 rupias — no te alcanza ni para una Carta del Triforce (Tingle cobra 398). Ve a Tingle en la Isla Pico de Aguja en cuanto puedas.",
+    "order": 2
+  },
+  {
+    "id": "habla-y-examina",
+    "title": "Habla con todos y lee cada cartel",
+    "body": "Los NPC de cada isla y los carteles sueltan la pista exacta para descifrar una Carta del Tesoro o encontrar un Trozo de Corazón cercano — casi nunca es necesario adivinar a ciegas.",
+    "order": 3
+  },
+  {
+    "id": "fotografia-todo",
+    "title": "Fotografía todo lo que veas",
+    "body": "La Caja de Pictografías Deluxe alimenta la Galería Nintendo de Carlov (134 figuras posibles) y desbloquea secundarias como la de Minenco en la Isla Cinco Estrellas.",
+    "order": 4
+  },
+  {
+    "id": "guarda-en-estatuas",
+    "title": "El juego solo guarda en estatuas doradas",
+    "body": "El progreso de esta guía (corazones, cartas, isla actual) se guarda solo y automáticamente en tu dispositivo — pero el propio juego solo guarda al tocar una estatua dorada. No cierres sin pasar por una.",
+    "order": 5
+  },
+  {
+    "id": "termina-y-repite",
+    "title": "Termina el juego una vez para desbloquear extras",
+    "body": "Al vencer a Ganondorf se desbloquean la Vela Rápida (navegación a máxima velocidad siempre) y el Modo Héroe, una partida nueva más exigente.",
+    "order": 6
+  }
+]

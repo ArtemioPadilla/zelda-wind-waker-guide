@@ -1,0 +1,103 @@
+import { describe, expect, it } from 'vitest';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import * as yaml from 'js-yaml';
+
+// Plain Node/fs checks against the raw content files — deliberately NOT going
+// through astro:content (that requires the full Astro Vite pipeline). This
+// still catches the failure modes that matter for a locale-mirrored content
+// tree: missing translations, id drift between es/en, and structural counts
+// the guide's copy asserts (e.g. "44 Pieces of Heart").
+
+const CONTENT_DIR = join(dirname(fileURLToPath(import.meta.url)));
+const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'bosses', 'sidequests', 'postgame'];
+
+function loadJson<T extends { id: string }>(locale: 'es' | 'en', name: string): T[] {
+  return JSON.parse(readFileSync(join(CONTENT_DIR, locale, `${name}.json`), 'utf8')) as T[];
+}
+
+function hasLocale(locale: 'es' | 'en', name: string): boolean {
+  return existsSync(join(CONTENT_DIR, locale, `${name}.json`));
+}
+
+function islandFiles(locale: 'es' | 'en'): string[] {
+  const dir = join(CONTENT_DIR, locale, 'islands');
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((f) => f.endsWith('.md')).sort();
+}
+
+describe('content: es/en parity', () => {
+  for (const name of JSON_ENTITIES) {
+    it(`${name}.json has matching ids in es and en, same order`, () => {
+      if (!hasLocale('en', name)) return;
+      const es = loadJson('es', name);
+      const en = loadJson('en', name);
+      expect(en.map((e) => e.id)).toEqual(es.map((e) => e.id));
+    });
+
+    it(`${name}.json has no duplicate ids`, () => {
+      const es = loadJson('es', name);
+      const ids = es.map((e) => e.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    });
+  }
+
+  it('islands: es and en have the same 18 filenames', () => {
+    const es = islandFiles('es');
+    expect(es).toHaveLength(18);
+    const en = islandFiles('en');
+    expect(en).toEqual(es);
+  });
+
+  it.each(['es', 'en'] as const)('%s: every island has valid act/order/pills frontmatter', (locale) => {
+    const files = islandFiles(locale);
+    const dir = join(CONTENT_DIR, locale, 'islands');
+    const orders = new Set<number>();
+    for (const file of files) {
+      const raw = readFileSync(join(dir, file), 'utf8');
+      const match = raw.match(/^---\n([\s\S]*?)\n---/);
+      expect(match, `${file} must start with a frontmatter block`).toBeTruthy();
+      const fm = yaml.load(match![1]) as { act: string; order: number; pills: { type: string; label: string }[] };
+      expect(['despertar', 'travesia', 'final']).toContain(fm.act);
+      orders.add(fm.order);
+      for (const pill of fm.pills) {
+        expect(['item', 'shop', 'boss', 'info']).toContain(pill.type);
+        expect(typeof pill.label).toBe('string');
+      }
+    }
+    expect(orders.size).toBe(files.length);
+  });
+});
+
+describe('content: heart pieces', () => {
+  it('has exactly 44 entries numbered 1-44 with no gaps or duplicates', () => {
+    const heartPieces = loadJson<{ id: string; number: number }>('es', 'heart-pieces');
+    expect(heartPieces).toHaveLength(44);
+    const numbers = heartPieces.map((h) => h.number).sort((a, b) => a - b);
+    expect(numbers).toEqual(Array.from({ length: 44 }, (_, i) => i + 1));
+  });
+});
+
+describe('content: charts', () => {
+  it('has exactly 8 Triforce Charts', () => {
+    const charts = loadJson<{ id: string; kind: string }>('es', 'charts');
+    const triforce = charts.filter((c) => c.kind === 'triforce');
+    expect(triforce).toHaveLength(8);
+  });
+
+  it('every treasure chart has a reward', () => {
+    const charts = loadJson<{ id: string; kind: string; reward?: string }>('es', 'charts');
+    const treasure = charts.filter((c) => c.kind === 'treasure');
+    expect(treasure.length).toBeGreaterThan(0);
+    for (const c of treasure) expect(c.reward).toBeTruthy();
+  });
+});
+
+describe('content: items', () => {
+  const VALID_CATEGORIES = new Set(['weapons', 'tools', 'sailing', 'upgrades']);
+  it('every item has a valid category', () => {
+    const items = loadJson<{ id: string; category: string }>('es', 'items');
+    for (const i of items) expect(VALID_CATEGORIES.has(i.category)).toBe(true);
+  });
+});

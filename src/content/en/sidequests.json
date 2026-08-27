@@ -1,0 +1,66 @@
+[
+  {
+    "id": "laberinto-salvaje",
+    "title": "Savage Labyrinth",
+    "items": [
+      "50 floors of combat under Outset Island — requires the Power Bracelets",
+      "Floor 30 hides a Triforce Chart/Shard",
+      "Floor 50 (HD version) rewards the Hero's Charm, which highlights hidden items on the map",
+      "Dying resets you to floor 1 — go in with full hearts and a full bomb bag"
+    ],
+    "order": 1
+  },
+  {
+    "id": "galeria-nintendo",
+    "title": "Nintendo Gallery",
+    "items": [
+      "Carlov, on Windfall Island, carves figurines from your pictographs",
+      "134 possible figurines in total, organized by category",
+      "The Deluxe Picto Box holds up to 12 photos at once (HD)",
+      "Carlov can carve up to 12 figurines in parallel (HD) — bring him several photos at once"
+    ],
+    "order": 2
+  },
+  {
+    "id": "cadena-de-trueques",
+    "title": "Zunari's trading sequence",
+    "items": [
+      "Starts by buying the Town Flower from Zunari for 10 rupees",
+      "Trade it with the wandering merchants on Bomb Island, Greatfish Isle, and Mother and Child Isles",
+      "The chain has about 12 items, each unlocking the next trade",
+      "Ends with a Piece of Heart and Magic Armor (halves damage taken in exchange for rupees)"
+    ],
+    "order": 3
+  },
+  {
+    "id": "grandes-hadas",
+    "title": "Great Fairies",
+    "items": [
+      "Each fountain grants a Quiver or Bomb Bag upgrade in exchange for rupees",
+      "Fountains are found on Southern Fairy Island, Cliff Plateau Isles, and other islands across the Great Sea",
+      "Upgrades raise capacity from 30 to 60, then 60 to 99"
+    ],
+    "order": 4
+  },
+  {
+    "id": "windfall-minijuegos",
+    "title": "Windfall Island minigames",
+    "items": [
+      "Salvatore's Sinking Ships — sink ships with the hand cannon",
+      "The cannon minigame against floating targets",
+      "Hide-and-seek with the Killer Bees, via Mrs. Marie",
+      "Night auctions — bid against other customers for items and Pieces of Heart"
+    ],
+    "order": 5
+  },
+  {
+    "id": "estatuas-tingle",
+    "title": "Tingle Statues (HD exclusive)",
+    "items": [
+      "5 Tingle Statues hidden across different islands of the Great Sea, new to the HD version",
+      "Marked on the map once found — an extra collectible on top of the main checklist",
+      "Not required to complete the main story"
+    ],
+    "order": 6
+  }
+]

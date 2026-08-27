@@ -1,0 +1,12 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import IslandDetailPage from '@/components/pages/IslandDetailPage.astro';
+
+export async function getStaticPaths() {
+  const islands = await getCollection('islands_es');
+  return islands.map((entry: CollectionEntry<'islands_es'>) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+<IslandDetailPage locale="es" entry={entry} />

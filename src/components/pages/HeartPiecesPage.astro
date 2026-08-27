@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHead from '@/components/common/SectionHead.astro';
+import ErrorBoundary from '@/components/islands/ErrorBoundary';
+import HeartPieceChecklist from '@/components/islands/HeartPieceChecklist';
+import { getLocalized } from '@/lib/content';
+import { useTranslations } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const heartPieces = (await getLocalized('heart-pieces', locale))
+  .sort((a, b) => a.data.number - b.data.number)
+  .map((m) => ({ id: m.id, number: m.data.number, island: m.data.island, location: m.data.location, note: m.data.note }));
+---
+<BaseLayout title={`${t('heartPieces.title')} · ${t('site.name')}`} lang={locale}>
+  <main id="main" class="mx-auto max-w-4xl px-5 py-14">
+    <SectionHead level="h1" title={t('heartPieces.title')} tight />
+    <p class="mb-6 text-sm text-muted-foreground">{t('heartPieces.note')}</p>
+    <ErrorBoundary client:load name="HeartPieceChecklist" messageLabel={t('a11y.errorBoundaryMessage')} reportLabel={t('a11y.errorBoundaryReport')}>
+      <HeartPieceChecklist items={heartPieces} progressLabel={t('heartPieces.progress')} />
+    </ErrorBoundary>
+  </main>
+</BaseLayout>

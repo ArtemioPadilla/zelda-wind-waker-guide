@@ -1,0 +1,23 @@
+[
+  { "id": "espada-heroes", "name": "Espada de los Héroes", "category": "weapons", "location": "Armario de la casa de Link, Isla Initial", "chapter": "1-1", "essential": true },
+  { "id": "escudo-madera", "name": "Escudo del Héroe", "category": "weapons", "location": "Regalo de la abuela tras el entrenamiento con Orca, Isla Initial", "chapter": "1-1", "essential": true },
+  { "id": "bombas", "name": "Bombas", "category": "weapons", "location": "Regalo de la abuela al volver de la 1ª Fortaleza Abandonada", "chapter": "1-2", "essential": true },
+  { "id": "arco", "name": "Arco", "category": "weapons", "location": "Caverna de Cresta de Dragón, antes de la sala de Gohma", "chapter": "1-4", "essential": true, "notes": "Imprescindible para el combate contra Gohma." },
+  { "id": "boomerang", "name": "Bumerán", "category": "weapons", "location": "Sala principal del Bosque Prohibido", "chapter": "1-5", "essential": true, "notes": "Corta las lianas de Kalle Demos y aturde enemigos a distancia." },
+  { "id": "escudo-espejo", "name": "Escudo Espejo", "category": "weapons", "location": "Templo de la Tierra", "chapter": "2-4", "essential": true, "notes": "Refleja luz — aturde a Jalhalla y a Puppet Ganon." },
+  { "id": "martillo-craneo", "name": "Martillo Cráneo", "category": "weapons", "location": "2ª Fortaleza Abandonada, cofre tras vencer a Fantasma Ganondorf", "chapter": "2-1", "essential": true },
+  { "id": "flechas-fuego-hielo", "name": "Flechas de Fuego y de Hielo", "category": "weapons", "location": "Islas Madre e Hija — regalo de la Reina de las Hadas", "chapter": "2-5", "notes": "Requiere la Balada de las Tempestades (Templo del Viento) para llegar volando." },
+  { "id": "gancho", "name": "Gancho", "category": "tools", "location": "Te lo entrega Medli en la cima de la Caverna de Cresta de Dragón", "chapter": "1-4", "essential": true },
+  { "id": "hoja-deku", "name": "Hoja Deku", "category": "tools", "location": "El Gran Árbol Deku, Refugio del Bosque", "chapter": "1-5", "essential": true, "notes": "Planea distancias largas; sopla velas para impulsar el barco." },
+  { "id": "garfio", "name": "Garfio (Hookshot)", "category": "tools", "location": "Templo del Viento", "chapter": "2-5", "essential": true },
+  { "id": "botas-hierro", "name": "Botas de Hierro", "category": "tools", "location": "Cueva escondida en la Isla del Anillo de Hielo", "chapter": "2-3", "essential": true },
+  { "id": "brazaletes-fuerza", "name": "Brazaletes de Fuerza", "category": "tools", "location": "2ª Fortaleza Abandonada, sala del tesoro", "chapter": "2-1", "essential": true, "notes": "Permite levantar rocas y estatuas pesadas." },
+  { "id": "telescopio", "name": "Telescopio", "category": "tools", "location": "Casa de la abuela, Isla Initial", "chapter": "1-1" },
+  { "id": "caja-pictografias-deluxe", "name": "Caja de Pictografías Deluxe", "category": "tools", "location": "2ª Fortaleza Abandonada — mejórala con Lenzo en Isla Windfall", "chapter": "2-1" },
+  { "id": "batuta-vientos", "name": "Batuta de los Vientos", "category": "sailing", "location": "Regalo de las tres hadas del bosque, Refugio del Bosque", "chapter": "1-5", "essential": true },
+  { "id": "rey-cabo-rojo", "name": "El Rey de Cabo Rojo", "category": "sailing", "location": "Te acompaña desde que sales de la 1ª Fortaleza Abandonada", "chapter": "1-2", "essential": true },
+  { "id": "canon", "name": "Cañón", "category": "sailing", "location": "Comprado en el barco de mercancía de Beedle (200 rupias) tras encontrar su carta", "chapter": "2-3" },
+  { "id": "carcaj-mas", "name": "Carcaj+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de flechas (30 → 60 → 99)", "chapter": "2-6" },
+  { "id": "bolsa-bombas-mas", "name": "Bolsa de Bombas+", "category": "upgrades", "location": "Grandes Hadas — aumenta la capacidad de bombas (30 → 60 → 99)", "chapter": "2-6" },
+  { "id": "billetera-mas", "name": "Billetera+", "category": "upgrades", "location": "Comprada a Tingle en Isla Pico de Aguja — aumenta el límite de rupias (200 → 500 → 1.000)", "chapter": "2-6" }
+]

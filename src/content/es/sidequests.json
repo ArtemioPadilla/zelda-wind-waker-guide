@@ -1,0 +1,66 @@
+[
+  {
+    "id": "laberinto-salvaje",
+    "title": "Laberinto Salvaje",
+    "items": [
+      "50 plantas de combate bajo Isla Initial — requiere los Brazaletes de Fuerza",
+      "La planta 30 esconde un Trozo/Carta del Triforce",
+      "La planta 50 (versión HD) entrega el Amuleto del Héroe, que resalta los objetos ocultos en el mapa",
+      "Cada intento reinicia desde la planta 1 si mueres — ve con corazones y bombas al máximo"
+    ],
+    "order": 1
+  },
+  {
+    "id": "galeria-nintendo",
+    "title": "Galería Nintendo",
+    "items": [
+      "Carlov, en Isla Windfall, talla figuras a partir de tus pictografías",
+      "134 figuras posibles en total, organizadas por categorías",
+      "La Caja de Pictografías Deluxe guarda hasta 12 fotos a la vez (HD)",
+      "Carlov puede tallar hasta 12 figuras en paralelo (HD) — llévale varias fotos de golpe"
+    ],
+    "order": 2
+  },
+  {
+    "id": "cadena-de-trueques",
+    "title": "Cadena de trueques de Zunari",
+    "items": [
+      "Empieza comprándole la Flor del Pueblo a Zunari por 10 rupias",
+      "Cámbiala con los mercaderes ambulantes de Isla de la Bomba, Isla Gran Pez e Islas Madre e Hija",
+      "La cadena tiene unos 12 objetos, cada uno desbloquea el siguiente trueque",
+      "Termina en un Trozo de Corazón y en la Armadura Mágica (reduce el daño a la mitad a cambio de rupias)"
+    ],
+    "order": 3
+  },
+  {
+    "id": "grandes-hadas",
+    "title": "Grandes Hadas",
+    "items": [
+      "Cada fuente entrega una mejora de Carcaj o Bolsa de Bombas a cambio de rupias",
+      "Hay fuentes en Isla del Hada del Sur, Isla de la Roca Cortada y otras islas del Gran Mar",
+      "Las mejoras suben la capacidad de 30 a 60 y de 60 a 99"
+    ],
+    "order": 4
+  },
+  {
+    "id": "windfall-minijuegos",
+    "title": "Minijuegos de Isla Windfall",
+    "items": [
+      "Sinking Ships de Salvatore — hunde barcos con el cañón de mano",
+      "Minijuego del cañón contra dianas flotantes",
+      "Escondite con las Abejas Asesinas junto a la Sra. Marie",
+      "Subastas nocturnas — puja contra otros clientes por objetos y Trozos de Corazón"
+    ],
+    "order": 5
+  },
+  {
+    "id": "estatuas-tingle",
+    "title": "Estatuillas de Tingle (exclusivo HD)",
+    "items": [
+      "5 estatuillas de Tingle escondidas por distintas islas del Gran Mar, novedad de la versión HD",
+      "Se marcan en el mapa una vez encontradas — sirven como coleccionable adicional",
+      "No son necesarias para completar la historia principal"
+    ],
+    "order": 6
+  }
+]

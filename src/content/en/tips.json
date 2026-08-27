@@ -1,0 +1,38 @@
+[
+  {
+    "id": "wind-waker-canciones",
+    "title": "Master the Wind Waker baton early",
+    "body": "It's the most-used tool in the game: Wind's Requiem changes the wind direction, the Ballad of Gales warps you across the sea, and the Command Melody activates statues. Learn each song as soon as you get it.",
+    "order": 1
+  },
+  {
+    "id": "sube-la-billetera",
+    "title": "Upgrade your wallet before you start hoarding rupees",
+    "body": "You start with capacity for only 200 rupees — not even enough for one Triforce Chart (Tingle charges 398). Visit Tingle on Rock Spire Isle as soon as you can.",
+    "order": 2
+  },
+  {
+    "id": "habla-y-examina",
+    "title": "Talk to everyone and read every sign",
+    "body": "NPCs on each island and posted signs give the exact clue you need to decipher a Treasure Chart or find a nearby Piece of Heart — you almost never have to guess blindly.",
+    "order": 3
+  },
+  {
+    "id": "fotografia-todo",
+    "title": "Photograph everything you see",
+    "body": "The Deluxe Picto Box feeds Carlov's Nintendo Gallery (134 possible figurines) and unlocks sidequests like Minenco's on Five-Star Isle.",
+    "order": 4
+  },
+  {
+    "id": "guarda-en-estatuas",
+    "title": "The game only saves at golden statues",
+    "body": "This guide's progress (hearts, charts, current island) saves automatically on your device — but the game itself only saves when you touch a golden statue. Don't close it without visiting one.",
+    "order": 5
+  },
+  {
+    "id": "termina-y-repite",
+    "title": "Beat the game once to unlock extras",
+    "body": "Defeating Ganondorf unlocks the Swift Sail (the boat always sails at max speed) and Hero Mode, a tougher new playthrough.",
+    "order": 6
+  }
+]

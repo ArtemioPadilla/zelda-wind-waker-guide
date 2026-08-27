@@ -1,0 +1,14 @@
+[
+  { "id": "fig-medli", "name": "Medli", "chapter": "1-4", "location": "Fotografíala en la Caverna de Cresta de Dragón antes de entrar a la sala de Gohma" },
+  { "id": "fig-makar", "name": "Makar", "chapter": "1-5", "location": "Fotografíalo tras rescatarlo en el Bosque Prohibido" },
+  { "id": "fig-ganondorf", "name": "Ganondorf", "chapter": "1-2", "location": "Captúralo en las escenas de la 1ª Fortaleza Abandonada" },
+  { "id": "fig-helmaroc-king", "name": "Rey Helmaroc", "chapter": "2-1", "location": "Fotografíalo durante el combate en la 2ª Fortaleza Abandonada" },
+  { "id": "fig-gohma", "name": "Gohma", "chapter": "1-4", "location": "Fotografíala durante el combate contra el jefe de la Caverna de Cresta de Dragón" },
+  { "id": "fig-tetra", "name": "Tetra", "chapter": "1-2", "location": "Captúrala en las escenas iniciales, antes de que se revele como la princesa Zelda" },
+  { "id": "fig-king-of-red-lions", "name": "El Rey de Cabo Rojo", "chapter": "1-2", "location": "Fotografíalo mientras navegas en mar abierto" },
+  { "id": "fig-beedle", "name": "Beedle", "chapter": "2-3", "location": "Fotografíalo asomado en su barco de mercancía" },
+  { "id": "fig-zunari", "name": "Zunari", "chapter": "1-3", "location": "Fotografíalo en su puesto de fruta de Isla Windfall" },
+  { "id": "fig-orca", "name": "Orca", "chapter": "1-1", "location": "Fotografíalo durante el entrenamiento con la espada en Isla Initial" },
+  { "id": "fig-grandma", "name": "Abuela de Link", "chapter": "1-1", "location": "Fotografíala en su choza de Isla Initial" },
+  { "id": "fig-minenco", "name": "Minenco", "chapter": "2-8", "location": "Fotografíala escondida bajo el agua en Isla Cinco Estrellas" }
+]

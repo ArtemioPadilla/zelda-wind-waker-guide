@@ -1,0 +1,11 @@
+[
+  { "id": "modo-heroe", "kind": "unlock", "name": "Modo Héroe", "how": "Termina el juego una vez. Disponible como nueva partida: los corazones no caen de los enemigos y el daño recibido se duplica.", "order": 1 },
+  { "id": "vela-rapida", "kind": "unlock", "name": "Vela Rápida", "how": "Termina el juego una vez. El Rey de Cabo Rojo navega siempre a máxima velocidad sin tener que mantener pulsado ningún botón.", "order": 2 },
+  { "id": "galeria-post-creditos", "kind": "unlock", "name": "Contenido extra de los créditos", "how": "Termina el juego para ver ilustraciones y escenas adicionales durante los créditos finales.", "order": 3 },
+  { "id": "route-1", "kind": "route", "step": 1, "title": "Termina la mazmorra principal antes de perseguir corazones", "body": "Cada mazmorra suele dar acceso a nuevas herramientas (Gancho, Garfio, Escudo Espejo) que abren zonas del Gran Mar antes inaccesibles — no te frustres si un Trozo de Corazón parece fuera de alcance." },
+  { "id": "route-2", "kind": "route", "step": 2, "title": "Sube la Billetera+ en cuanto puedas", "body": "Con 200 rupias de tope no te alcanza ni para una Carta del Triforce. Ve a Tingle en Isla Pico de Aguja apenas tengas rupias de sobra." },
+  { "id": "route-3", "kind": "route", "step": 3, "title": "Compra el Cañón temprano", "body": "Muchos Trozos de Corazón y Cartas dependen de hundir barcos de guerra o disparar a interruptores lejanos — el Cañón se paga solo." },
+  { "id": "route-4", "kind": "route", "step": 4, "title": "Deja el Laberinto Salvaje para el final", "body": "Con la Espada Maestra a plena potencia y corazones al máximo, las 50 plantas son mucho más rápidas de limpiar." },
+  { "id": "route-5", "kind": "route", "step": 5, "title": "Guarda las Cartas del Triforce para el segundo tramo", "body": "No puedes entrar a la Torre de Ganon sin las ocho — pero tampoco hace falta descifrarlas todas antes del Templo de la Tierra y el Templo del Viento; avanza la historia mientras exploras." },
+  { "id": "route-6", "kind": "route", "step": 6, "title": "Repite en Modo Héroe con la ruta ya aprendida", "body": "La segunda vuelta es el mejor momento para perseguir el 100%: ya conoces cada isla y cada Carta, así que puedes centrarte en el desafío." }
+]
