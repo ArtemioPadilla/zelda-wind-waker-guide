@@ -136,13 +136,34 @@ sources before adding it. Status now:
     summoner, Tower of the Gods fire-mage) that had been incorrectly
     merged into one `figm-wizzrobe` entry — now split into
     `figm-wizzrobe-wind-temple` / `figm-wizzrobe-tower-of-gods`.
-- **Savage Labyrinth — improved, not floor-by-floor.** The `laberinto-salvaje`
-  sidequest card now names the 5 ten-floor blocks and which dungeon each
-  pulls enemies from, plus the every-10th-floor rest-floor pattern (all
-  well-corroborated across sources). A literal floor-1-through-50
-  enemy-composition table is still not included — it adds little
-  walkthrough value over the block-level summary and the sourcing for
-  individual encounters gets thin past the well-known milestones.
+- **Savage Labyrinth — closed, genuine floor-by-floor (2026-08-28).** A
+  follow-up pass re-attempted the floor-1-through-50 breakdown this note
+  previously judged out of reach ("sourcing gets thin past the well-known
+  milestones") after the site owner set an explicit completeness goal
+  superseding that earlier call. The real sourcing turned out to be
+  solid for all 50 floors, not thin: Zelda Wiki's own floor table (which
+  itself cites page 112 of Prima's official printed strategy guide) matches,
+  floor for floor, an independent 2003 GameFAQs FAQ by shand2001 (sourced
+  from BradyGames' printed guide) once that FAQ's off-by-one floor numbering
+  (it counts the entrance/Fairies room as "Floor 1") is normalized to this
+  project's existing convention. Every floor matched exactly across both
+  sources except one: floor 5's Magtail count (Zelda Wiki says 5, the
+  GameFAQs FAQ says 4) — kept as Zelda Wiki's more precisely sourced number,
+  flagged here rather than silently resolved. Game8's block-level enemy
+  lists independently corroborate every enemy type in every block. Added as
+  a new `labyrinth-floors` collection (50 entries/locale) rendered as a
+  dedicated table on the Sidequests page below the card grid — the existing
+  `laberinto-salvaje` card's block-level summary stays as the compact
+  overview, now linking down to the full table. This pass also fixed two
+  pre-existing inaccuracies found in that summary while researching: floors
+  11-20 pull enemies from the **Forbidden Woods** dungeon, not "Forest
+  Haven" (the overworld hub island that leads to it — a different place,
+  confirmed wrong against all 3 sources checked); and the 3-Fairies vase is
+  in the unnumbered entrance room before floor 1, not "floor 1" itself
+  (Zelda Wiki explicitly designates the entrance "floor zero"). Floors
+  31-40/41-50 were also re-split to Earth Temple / Wind Temple respectively
+  (matching all sources) instead of the prior merged "Earth/Wind Temple" +
+  "mix" framing.
 - **Per-chart shard pairing — intentionally still unresolved.** Unchanged
   from the original design decision, not a time-constraint gap: community
   sources still conflict on the exact chart-N → shard-island-N pairing for
