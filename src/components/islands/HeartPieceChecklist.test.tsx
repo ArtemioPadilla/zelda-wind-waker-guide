@@ -31,6 +31,7 @@ const viewProps = {
   mapCheckedLabel: 'marcado',
   mapUncheckedLabel: 'sin marcar',
   mapMissingNote: 'Algunos trozos no aparecen en el mapa.',
+  mapCreditLabel: 'Arte: carta de referencia comunitaria.',
 };
 
 describe('HeartPieceChecklist', () => {
