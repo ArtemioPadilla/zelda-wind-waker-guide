@@ -88,6 +88,25 @@ const figurinesSchema = z.object({
   location: z.string(),
 });
 
+// Generic enemy figurines — the "still-open gap" the CLAUDE.md TODO named
+// after the `figurines` pass: most of the 134 possible Nintendo Gallery
+// figurines beyond the 27 curated named/story ones are common enemy types
+// (Bokoblin, ChuChu, Darknut, ...) whose Pictograph can be taken from almost
+// any encounter, so they have no single named "chapter" the way a
+// story-specific figurine does. IMPORTANT: despite that TODO's wording,
+// research for this pass (Zelda Wiki, Zelda Dungeon Wiki, Thonky.com,
+// Game8, StrategyWiki) turned up no cumulative-kill-count unlock mechanic
+// anywhere in Wind Waker — every one of the 134 figurines, generic enemies
+// included, is unlocked the same way as the curated 27: showing Carlov a
+// qualifying color Pictograph. So this schema is shaped around that real
+// mechanic (name + how/where to get a qualifying photo) instead of a
+// kill-count field that would have to be fabricated to exist.
+const figurineMonstersSchema = z.object({
+  name: z.string(),
+  location: z.string(),
+  note: z.string().optional(),
+});
+
 const bossesSchema = z.object({
   name: z.string(),
   dungeon: z.string(),
@@ -134,6 +153,7 @@ export const collections = {
   ...localizedJson('heart-pieces', heartPiecesSchema),
   ...localizedJson('charts', chartsSchema),
   ...localizedJson('figurines', figurinesSchema),
+  ...localizedJson('figurine-monsters', figurineMonstersSchema),
   ...localizedJson('bosses', bossesSchema),
   ...localizedJson('sidequests', sidequestsSchema),
   ...localizedJson('postgame', postgameSchema),

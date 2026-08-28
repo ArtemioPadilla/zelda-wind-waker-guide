@@ -87,11 +87,16 @@ sources before adding it. Status now:
 - **Nintendo Gallery figurines — expanded, not exhaustive.** Grew
   `figurines.json` from 12 to 27 well-documented entries (added Windfall
   NPCs tied to verifiable photo spots, the 4 remaining non-Ganon/Gohma
-  dungeon bosses, and the 5 Legendary-Pictograph purchases from Lenzo). The
-  full game still has 134 possible figurines; most of the rest are generic
-  enemy-type figurines (Bokoblin, ChuChu, etc.) unlocked by kill counts
-  rather than a specific place, which don't fit this table's
-  name/chapter/location shape well — left as a still-open gap.
+  dungeon bosses, and the 5 Legendary-Pictograph purchases from Lenzo). A
+  follow-up pass corrected a wrong assumption in this note's earlier
+  wording: generic enemy-type figurines are **not** kill-count unlocks —
+  Wind Waker has no such mechanic anywhere in its figurine system. Every
+  one of the 134 possible figurines, generic enemies included, unlocks the
+  same way as the curated 27: showing Carlov a qualifying Pictograph. The
+  remaining ~107 generic-enemy figurines now have their own collection,
+  `figurine-monsters` (27 entries added so far, `{name, location, note?}`),
+  rendered as a reference table below the curated one on `/charts` — still
+  not exhaustive, but the shape is now correct.
 - **Savage Labyrinth — improved, not floor-by-floor.** The `laberinto-salvaje`
   sidequest card now names the 5 ten-floor blocks and which dungeon each
   pulls enemies from, plus the every-10th-floor rest-floor pattern (all
