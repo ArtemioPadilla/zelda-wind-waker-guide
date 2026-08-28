@@ -86,6 +86,13 @@ const figurinesSchema = z.object({
   name: z.string(),
   chapter: z.string(),
   location: z.string(),
+  // Filename only (not a path) of a small real Nintendo Gallery figurine
+  // render under public/images/figurines/ — sourced from Zelda Wiki/Fandom's
+  // file store (TWW ... Figurine Model.png, texture-ripped 3D model
+  // captures). Optional: a handful of figurines may have no findable real
+  // render, and those stay text-only rather than get a wrong/placeholder
+  // image (see figurines.json entries for which ones, if any).
+  image: z.string().optional(),
 });
 
 // Generic enemy figurines — the "still-open gap" the CLAUDE.md TODO named
@@ -105,6 +112,9 @@ const figurineMonstersSchema = z.object({
   name: z.string(),
   location: z.string(),
   note: z.string().optional(),
+  // Same real-image convention as figurinesSchema.image, resolved under
+  // public/images/figurine-monsters/ instead.
+  image: z.string().optional(),
 });
 
 const bossesSchema = z.object({

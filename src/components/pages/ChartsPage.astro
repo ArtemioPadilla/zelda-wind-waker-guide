@@ -6,6 +6,7 @@ import ErrorBoundary from '@/components/islands/ErrorBoundary';
 import ChartChecklist from '@/components/islands/ChartChecklist';
 import { getLocalized } from '@/lib/content';
 import { useTranslations } from '@/i18n/utils';
+import { withBase } from '@/lib/href';
 import type { Locale } from '@/i18n/ui';
 
 interface Props { locale: Locale }
@@ -57,10 +58,12 @@ const treasure = charts.filter(isTreasure).map((c) => ({
 
     <section class="mb-10">
       <SubsectionHead title={t('charts.figurinesTitle')} />
+      <p class="mb-4 text-xs text-muted-foreground">{t('charts.figurineImageCredit')}</p>
       <div class="ledger overflow-x-auto">
         <table class="w-full min-w-[480px] text-sm">
           <thead class="sr-only">
             <tr>
+              <th scope="col">{t('charts.figurineImage')}</th>
               <th scope="col">{t('charts.figurineName')}</th>
               <th scope="col">{t('charts.figurineChapter')}</th>
               <th scope="col">{t('charts.figurineLocation')}</th>
@@ -69,6 +72,19 @@ const treasure = charts.filter(isTreasure).map((c) => ({
           <tbody>
             {figurines.map((g) => (
               <tr class="border-b border-border/70 last:border-0">
+                <td class="w-14 p-3 align-top">
+                  {g.data.image ? (
+                    <img
+                      src={withBase(`/images/figurines/${g.data.image}`)}
+                      alt=""
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                      class="h-12 w-12 object-contain"
+                    />
+                  ) : null}
+                </td>
                 <td class="p-3 align-top font-medium text-foreground">{g.data.name}</td>
                 <td class="whitespace-nowrap p-3 align-top font-mono text-xs text-primary">{g.data.chapter}</td>
                 <td class="p-3 align-top text-xs text-muted-foreground">{g.data.location}</td>
@@ -81,11 +97,13 @@ const treasure = charts.filter(isTreasure).map((c) => ({
 
     <section>
       <SubsectionHead title={t('charts.figurineMonstersTitle')} />
-      <p class="mb-4 text-sm text-muted-foreground">{t('charts.figurineMonstersNote')}</p>
+      <p class="mb-1 text-sm text-muted-foreground">{t('charts.figurineMonstersNote')}</p>
+      <p class="mb-4 text-xs text-muted-foreground">{t('charts.figurineImageCredit')}</p>
       <div class="ledger overflow-x-auto">
         <table class="w-full min-w-[480px] text-sm">
           <thead class="sr-only">
             <tr>
+              <th scope="col">{t('charts.figurineImage')}</th>
               <th scope="col">{t('charts.figurineMonsterName')}</th>
               <th scope="col">{t('charts.figurineMonsterLocation')}</th>
             </tr>
@@ -93,6 +111,19 @@ const treasure = charts.filter(isTreasure).map((c) => ({
           <tbody>
             {figurineMonsters.map((m) => (
               <tr class="border-b border-border/70 last:border-0">
+                <td class="w-14 p-3 align-top">
+                  {m.data.image ? (
+                    <img
+                      src={withBase(`/images/figurine-monsters/${m.data.image}`)}
+                      alt=""
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                      class="h-12 w-12 object-contain"
+                    />
+                  ) : null}
+                </td>
                 <td class="whitespace-nowrap p-3 align-top font-medium text-foreground">{m.data.name}</td>
                 <td class="p-3 align-top text-xs text-muted-foreground">
                   {m.data.location}

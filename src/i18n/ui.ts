@@ -47,11 +47,16 @@ export const ui = {
     'heartPieces.mapUnchecked': 'sin marcar',
     'heartPieces.mapMissingNote':
       '2 trozos sin una isla fija (correo automático / árboles marchitos repartidos por el mar) no aparecen en el mapa — revisa la lista para verlos.',
+    'heartPieces.mapCredit':
+      'Arte de la Carta del Mar: carta de referencia comunitaria de Chrimp (2003), vía Zelda Wiki/Fandom — usada como fondo de mapa real, de fan a fan.',
     'charts.title': 'Cartas del Triforce y del Tesoro',
     'charts.note': 'Tingle cobra 398 rupias por carta descifrada',
     'charts.triforce': 'Cartas del Triforce (8 fragmentos)',
     'charts.treasure': 'Cartas del Tesoro',
     'charts.figurinesTitle': 'Dónde conseguir las figuras',
+    'charts.figurineImage': 'Figura (imagen)',
+    'charts.figurineImageCredit':
+      'Imágenes: capturas del modelo real de la Nintendo Gallery, vía Zelda Wiki/Fandom.',
     'charts.figurineName': 'Figura',
     'charts.figurineChapter': 'Isla / momento',
     'charts.figurineLocation': 'Cómo conseguirla',
@@ -133,11 +138,16 @@ export const ui = {
     'heartPieces.mapUnchecked': 'not checked',
     'heartPieces.mapMissingNote':
       "2 pieces without a fixed island (auto-mailed / wilting trees scattered around the sea) aren't shown on the map — check the list to see them.",
+    'heartPieces.mapCredit':
+      'Sea Chart art: community reference chart by Chrimp (2003), via Zelda Wiki/Fandom — used as a real map backdrop, fan-to-fan.',
     'charts.title': 'Triforce and Treasure Charts',
     'charts.note': 'Tingle charges 398 rupees per chart deciphered',
     'charts.triforce': 'Triforce Charts (8 shards)',
     'charts.treasure': 'Treasure Charts',
     'charts.figurinesTitle': 'Where to get the figurines',
+    'charts.figurineImage': 'Figurine (image)',
+    'charts.figurineImageCredit':
+      'Images: real Nintendo Gallery model captures, via Zelda Wiki/Fandom.',
     'charts.figurineName': 'Figurine',
     'charts.figurineChapter': 'Island / moment',
     'charts.figurineLocation': 'How to get it',

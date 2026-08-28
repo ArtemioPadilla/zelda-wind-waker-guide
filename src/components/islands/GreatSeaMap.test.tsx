@@ -22,11 +22,28 @@ describe('GreatSeaMap', () => {
         checkedLabel="checked"
         uncheckedLabel="not checked"
         mapLabel="Great Sea map"
+        creditLabel="Sea Chart art credit"
       />,
     );
     const pins = screen.getAllByRole('button');
     expect(pins).toHaveLength(2);
     expect(pins[0]).toHaveStyle({ left: '91.3%', top: '19.8%' });
+  });
+
+  it('renders the image source credit', () => {
+    render(
+      <GreatSeaMap
+        items={items}
+        checked={new Set()}
+        onToggle={vi.fn()}
+        atlasDots={atlasDots}
+        checkedLabel="checked"
+        uncheckedLabel="not checked"
+        mapLabel="Great Sea map"
+        creditLabel="Sea Chart art credit"
+      />,
+    );
+    expect(screen.getByText('Sea Chart art credit')).toBeInTheDocument();
   });
 
   it('gives every pin an aria-label combining the location text and checked state', () => {
@@ -39,6 +56,7 @@ describe('GreatSeaMap', () => {
         checkedLabel="checked"
         uncheckedLabel="not checked"
         mapLabel="Great Sea map"
+        creditLabel="Sea Chart art credit"
       />,
     );
     expect(screen.getByRole('button', { name: /Hit Orca 500 times.*checked/ })).toHaveAttribute('aria-pressed', 'true');
@@ -60,6 +78,7 @@ describe('GreatSeaMap', () => {
         checkedLabel="checked"
         uncheckedLabel="not checked"
         mapLabel="Great Sea map"
+        creditLabel="Sea Chart art credit"
       />,
     );
     await user.click(screen.getByRole('button', { name: /Hit Orca 500 times/ }));
@@ -76,6 +95,7 @@ describe('GreatSeaMap', () => {
         checkedLabel="checked"
         uncheckedLabel="not checked"
         mapLabel="Great Sea map"
+        creditLabel="Sea Chart art credit"
       />,
     );
     expect(screen.getByRole('group', { name: 'Great Sea map' })).toBeInTheDocument();

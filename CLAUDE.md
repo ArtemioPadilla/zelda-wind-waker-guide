@@ -93,10 +93,49 @@ sources before adding it. Status now:
   Wind Waker has no such mechanic anywhere in its figurine system. Every
   one of the 134 possible figurines, generic enemies included, unlocks the
   same way as the curated 27: showing Carlov a qualifying Pictograph. The
-  remaining ~107 generic-enemy figurines now have their own collection,
-  `figurine-monsters` (27 entries added so far, `{name, location, note?}`),
-  rendered as a reference table below the curated one on `/charts` — still
-  not exhaustive, but the shape is now correct.
+  remaining ~107 non-curated figurines now have their own collection,
+  `figurine-monsters` (`{name, location, note?, image?}`), rendered as a
+  reference table below the curated one on `/charts`.
+- **Real imagery pass (2026-08-28) — owner-approved copyright tradeoff.**
+  Per explicit direction from the site owner (after being warned of the
+  risk), swapped the hand-drawn schematics for real, sourced images, same
+  as sibling fan guide sites already do:
+  - **Great Sea map.** `GreatSeaMap.tsx`'s backdrop is now
+    `public/images/great-sea-chart.png`, a 712x712 crop (bare 7x7 grid,
+    label strips removed) of the community-authored "Zelda wind waker sea
+    chart" reference (Chrimp, 2003), fetched from Zelda Wiki/Fandom's file
+    store. The crop's pixel bounds were sampled to match the source
+    image's own grid lines exactly, so it lines up 1:1 with the existing
+    0-100 percent coordinate space every pin already used — no rescaling
+    needed. All 42 heart-piece pins with fixed coordinates were
+    cross-checked against their `atlas` sector cell (100% consistent) and
+    visually verified by compositing them onto the image; pin placement
+    always follows this repo's own `atlas` sector data, not the source
+    image's own (sometimes differently-labeled) per-cell doodles — see the
+    comment in `GreatSeaMap.tsx` for the one spot-checked discrepancy
+    found (Dragon Roost Island). `charts.json` (Triforce/Treasure Charts)
+    has no map/pin rendering in this codebase — that scope didn't exist to
+    recalibrate.
+  - **Figurine images.** All 27 `figurines.json` entries and all 107
+    `figurine-monsters.json` entries now carry a small real Nintendo
+    Gallery figurine render (`image` field, filename only, resolved under
+    `public/images/figurines/` or `public/images/figurine-monsters/`) —
+    texture-ripped 3D model captures sourced from Zelda Wiki/Fandom's file
+    store (`TWW ... Figurine Model.png`), rendered in `ChartsPage.astro`'s
+    two tables. Every one of the 134 total figurines had a findable real
+    image, so no entry ended up text-only-by-necessity this pass.
+  - **`figurine-monsters` grown from 27 to 107 (the full non-curated
+    remainder, 134 total − 27 curated).** Sourced from Zelda Wiki's
+    "Figurines in The Wind Waker" article (the same page structure used
+    for the image filenames above), which lists all 134 figurines by hall
+    with a short bio/habitat each; missable-figurine warnings (Kogoli,
+    Zephos & Cyclos, Old Man Ho Ho, Aryll's auto-unlock) were additionally
+    cross-checked against a second source (zeldacentral.com's figurine
+    guide). Also fixed a pre-existing gap found during this pass: Wind
+    Waker actually has 2 distinct Wizzrobe figurine slots (Wind Temple
+    summoner, Tower of the Gods fire-mage) that had been incorrectly
+    merged into one `figm-wizzrobe` entry — now split into
+    `figm-wizzrobe-wind-temple` / `figm-wizzrobe-tower-of-gods`.
 - **Savage Labyrinth — improved, not floor-by-floor.** The `laberinto-salvaje`
   sidequest card now names the 5 ten-floor blocks and which dungeon each
   pulls enemies from, plus the every-10th-floor rest-floor pattern (all

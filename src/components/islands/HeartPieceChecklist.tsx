@@ -25,6 +25,7 @@ interface Props {
   mapCheckedLabel: string;
   mapUncheckedLabel: string;
   mapMissingNote: string;
+  mapCreditLabel: string;
 }
 
 export default function HeartPieceChecklist({
@@ -37,6 +38,7 @@ export default function HeartPieceChecklist({
   mapCheckedLabel,
   mapUncheckedLabel,
   mapMissingNote,
+  mapCreditLabel,
 }: Props) {
   const checked = useStore(heartPiecesStore.$checked);
   const done = items.filter((i) => checked.has(i.id)).length;
@@ -112,6 +114,7 @@ export default function HeartPieceChecklist({
             checkedLabel={mapCheckedLabel}
             uncheckedLabel={mapUncheckedLabel}
             mapLabel={mapLabel}
+            creditLabel={mapCreditLabel}
           />
         </div>
       )}
