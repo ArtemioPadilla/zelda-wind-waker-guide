@@ -36,8 +36,9 @@ The fastest way is the **"Report an issue" chat bubble** in the bottom-right
 corner of the live site — it pre-fills a GitHub issue with the page context
 and any console/network diagnostics captured, so you don't have to type
 that part by hand. It works for content errors too, not just bugs (pick
-"Translation issue" or "Bug" as the type). Opening an issue directly, or a
-GitHub Discussion for anything more open-ended, works just as well.
+"Translation issue" or "Bug" as the type). Opening an issue directly works
+just as well — GitHub Discussions isn't enabled on this repo, so issues
+are the one channel for everything, including open-ended questions.
 
 ## What a good content-correction PR looks like
 
