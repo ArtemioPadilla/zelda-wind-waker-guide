@@ -11,7 +11,7 @@ import * as yaml from 'js-yaml';
 // the guide's copy asserts (e.g. "44 Pieces of Heart").
 
 const CONTENT_DIR = join(dirname(fileURLToPath(import.meta.url)));
-const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'bosses', 'sidequests', 'postgame', 'atlas'];
+const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'figurine-monsters', 'bosses', 'sidequests', 'postgame', 'atlas'];
 
 function loadJson<T extends { id: string }>(locale: 'es' | 'en', name: string): T[] {
   return JSON.parse(readFileSync(join(CONTENT_DIR, locale, `${name}.json`), 'utf8')) as T[];
@@ -146,5 +146,17 @@ describe('content: atlas', () => {
     const atlas = loadJson<{ id: string; sector: string }>('es', 'atlas');
     expect(atlas).toHaveLength(49);
     expect(new Set(atlas.map((a) => a.sector)).size).toBe(49);
+  });
+});
+
+describe('content: figurine-monsters', () => {
+  it('every entry has a non-empty name and location, no duplicate names', () => {
+    const monsters = loadJson<{ id: string; name: string; location: string }>('es', 'figurine-monsters');
+    expect(monsters.length).toBeGreaterThan(0);
+    for (const m of monsters) {
+      expect(m.name.trim().length).toBeGreaterThan(0);
+      expect(m.location.trim().length).toBeGreaterThan(0);
+    }
+    expect(new Set(monsters.map((m) => m.name)).size).toBe(monsters.length);
   });
 });

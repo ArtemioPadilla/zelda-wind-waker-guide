@@ -55,6 +55,11 @@ export const ui = {
     'charts.figurineName': 'Figura',
     'charts.figurineChapter': 'Isla / momento',
     'charts.figurineLocation': 'Cómo conseguirla',
+    'charts.figurineMonstersTitle': 'Figuras de enemigos comunes',
+    'charts.figurineMonstersNote':
+      'ninguna figura del juego se desbloquea por número de derrotas — todas, incluidas estas, requieren mostrarle a Carlov una Pictografía válida',
+    'charts.figurineMonsterName': 'Enemigo',
+    'charts.figurineMonsterLocation': 'Cómo conseguir la pictografía',
     'islands.title': 'El Gran Mar, isla a isla',
     'islands.note': 'abre cualquier isla',
     'islands.act.despertar': 'El Despertar',
@@ -136,6 +141,11 @@ export const ui = {
     'charts.figurineName': 'Figurine',
     'charts.figurineChapter': 'Island / moment',
     'charts.figurineLocation': 'How to get it',
+    'charts.figurineMonstersTitle': 'Common enemy figurines',
+    'charts.figurineMonstersNote':
+      "no figurine in the game unlocks by a defeat count — every one, these included, needs a qualifying Pictograph shown to Carlov",
+    'charts.figurineMonsterName': 'Enemy',
+    'charts.figurineMonsterLocation': 'How to get the pictograph',
     'islands.title': 'The Great Sea, island by island',
     'islands.note': 'open any island',
     'islands.act.despertar': 'The Awakening',
