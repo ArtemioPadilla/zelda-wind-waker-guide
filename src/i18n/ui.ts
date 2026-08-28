@@ -54,6 +54,9 @@ export const ui = {
     'charts.triforce': 'Cartas del Triforce (8 fragmentos)',
     'charts.treasure': 'Cartas del Tesoro',
     'charts.figurinesTitle': 'Dónde conseguir las figuras',
+    'charts.figurineImage': 'Figura (imagen)',
+    'charts.figurineImageCredit':
+      'Imágenes: capturas del modelo real de la Nintendo Gallery, vía Zelda Wiki/Fandom.',
     'charts.figurineName': 'Figura',
     'charts.figurineChapter': 'Isla / momento',
     'charts.figurineLocation': 'Cómo conseguirla',
@@ -142,6 +145,9 @@ export const ui = {
     'charts.triforce': 'Triforce Charts (8 shards)',
     'charts.treasure': 'Treasure Charts',
     'charts.figurinesTitle': 'Where to get the figurines',
+    'charts.figurineImage': 'Figurine (image)',
+    'charts.figurineImageCredit':
+      'Images: real Nintendo Gallery model captures, via Zelda Wiki/Fandom.',
     'charts.figurineName': 'Figurine',
     'charts.figurineChapter': 'Island / moment',
     'charts.figurineLocation': 'How to get it',
