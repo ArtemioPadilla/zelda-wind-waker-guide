@@ -131,6 +131,32 @@ const sidequestsSchema = z.object({
   order: z.number(),
 });
 
+// Savage Labyrinth floor-by-floor enemy composition (all 50 floors) — the
+// gap CLAUDE.md's TODO originally left at block-level ("adds little
+// walkthrough value, sourcing gets thin"). A genuine re-attempt found solid,
+// cross-checkable sourcing for every floor: Zelda Wiki's table (which itself
+// cites page 112 of Prima's official printed strategy guide) matches, floor
+// for floor, an independent 2003 GameFAQs FAQ by shand2001 (sourced from
+// BradyGames' printed guide) once its off-by-one floor numbering (it counts
+// the entrance/Fairies room as "Floor 1") is normalized to this project's
+// existing 1-50 convention (floor 30 = Triforce Chart/Shard, floor 50 =
+// final reward, matching Game8's numbering too). Rendered as a dedicated
+// table on the Sidequests page, not folded into the generic `items` bullet
+// list — 50 rows doesn't fit that card shape.
+const labyrinthFloorsSchema = z.object({
+  floor: z.number().min(1).max(50),
+  // Which of the 5 ten-floor blocks this floor belongs to (the main-quest
+  // dungeon its enemy pool is drawn from) — repeated per-row so the table
+  // doesn't need a separate grouping header per locale.
+  block: z.string(),
+  // Formatted enemy composition, or a short rest/reward description for the
+  // no-combat floors (10, 20, 30, 40, 50).
+  enemies: z.string(),
+  note: z.string().optional(),
+  // Rest/reward floor with no enemies to defeat (10, 20, 30, 40, 50).
+  rest: z.boolean().default(false),
+});
+
 const postgameSchema = z.union([
   z.object({ kind: z.literal('unlock'), name: z.string(), how: z.string(), order: z.number() }),
   z.object({ kind: z.literal('route'), step: z.number(), title: z.string(), body: z.string() }),
@@ -166,6 +192,7 @@ export const collections = {
   ...localizedJson('figurine-monsters', figurineMonstersSchema),
   ...localizedJson('bosses', bossesSchema),
   ...localizedJson('sidequests', sidequestsSchema),
+  ...localizedJson('labyrinth-floors', labyrinthFloorsSchema),
   ...localizedJson('postgame', postgameSchema),
   ...localizedJson('atlas', atlasSchema),
   islands_es: defineCollection({ loader: glob({ pattern: '*.md', base: 'src/content/es/islands' }), schema: islandsSchema }),

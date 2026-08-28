@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHead from '@/components/common/SectionHead.astro';
+import SubsectionHead from '@/components/common/SubsectionHead.astro';
 import { getLocalized } from '@/lib/content';
 import { useTranslations } from '@/i18n/utils';
 import type { Locale } from '@/i18n/ui';
@@ -10,6 +11,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 
 const cards = (await getLocalized('sidequests', locale)).sort((a, b) => a.data.order - b.data.order);
+const labyrinthFloors = (await getLocalized('labyrinth-floors', locale)).sort((a, b) => a.data.floor - b.data.floor);
 ---
 <BaseLayout title={`${t('sidequests.title')} · ${t('site.name')}`} lang={locale}>
   <main id="main" class="mx-auto max-w-4xl px-5 py-14">
@@ -24,5 +26,36 @@ const cards = (await getLocalized('sidequests', locale)).sort((a, b) => a.data.o
         </div>
       ))}
     </div>
+
+    <section class="mt-10">
+      <SubsectionHead title={t('sidequests.labyrinthFloorsTitle')} />
+      <p class="mb-4 text-sm text-muted-foreground">{t('sidequests.labyrinthFloorsNote')}</p>
+      <div class="ledger overflow-x-auto">
+        <table class="w-full min-w-[560px] text-sm">
+          <thead class="sr-only">
+            <tr>
+              <th scope="col">{t('sidequests.labyrinthFloor')}</th>
+              <th scope="col">{t('sidequests.labyrinthEnemies')}</th>
+              <th scope="col">{t('sidequests.labyrinthNotes')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {labyrinthFloors.map((f) => (
+              <tr class="border-b border-border/70 last:border-0">
+                <td class="w-16 whitespace-nowrap p-3 align-top font-mono text-xs text-primary">
+                  {f.data.floor}
+                  {f.data.rest && <span class="ml-1 text-[10px] uppercase tracking-wide text-muted-foreground">({t('sidequests.labyrinthRest')})</span>}
+                </td>
+                <td class="p-3 align-top font-medium text-foreground">{f.data.enemies}</td>
+                <td class="p-3 align-top text-xs text-muted-foreground">
+                  {f.data.note}
+                  <span class="mt-1 block font-mono text-[10px] uppercase tracking-wide text-primary/70">{f.data.block}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 </BaseLayout>

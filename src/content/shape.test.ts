@@ -11,7 +11,7 @@ import * as yaml from 'js-yaml';
 // the guide's copy asserts (e.g. "44 Pieces of Heart").
 
 const CONTENT_DIR = join(dirname(fileURLToPath(import.meta.url)));
-const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'figurine-monsters', 'bosses', 'sidequests', 'postgame', 'atlas'];
+const JSON_ENTITIES = ['tips', 'items', 'heart-pieces', 'charts', 'figurines', 'figurine-monsters', 'bosses', 'sidequests', 'postgame', 'atlas', 'labyrinth-floors'];
 
 function loadJson<T extends { id: string }>(locale: 'es' | 'en', name: string): T[] {
   return JSON.parse(readFileSync(join(CONTENT_DIR, locale, `${name}.json`), 'utf8')) as T[];
@@ -146,6 +146,29 @@ describe('content: atlas', () => {
     const atlas = loadJson<{ id: string; sector: string }>('es', 'atlas');
     expect(atlas).toHaveLength(49);
     expect(new Set(atlas.map((a) => a.sector)).size).toBe(49);
+  });
+});
+
+describe('content: labyrinth-floors', () => {
+  it('has exactly 50 entries numbered 1-50 with no gaps or duplicates', () => {
+    const floors = loadJson<{ id: string; floor: number }>('es', 'labyrinth-floors');
+    expect(floors).toHaveLength(50);
+    const numbers = floors.map((f) => f.floor).sort((a, b) => a - b);
+    expect(numbers).toEqual(Array.from({ length: 50 }, (_, i) => i + 1));
+  });
+
+  it('exactly the 5 rest floors (10/20/30/40/50) are flagged rest: true', () => {
+    const floors = loadJson<{ id: string; floor: number; rest: boolean }>('es', 'labyrinth-floors');
+    const restFloors = floors.filter((f) => f.rest).map((f) => f.floor).sort((a, b) => a - b);
+    expect(restFloors).toEqual([10, 20, 30, 40, 50]);
+  });
+
+  it('every entry has a non-empty enemies description and block label', () => {
+    const floors = loadJson<{ id: string; enemies: string; block: string }>('es', 'labyrinth-floors');
+    for (const f of floors) {
+      expect(f.enemies.trim().length).toBeGreaterThan(0);
+      expect(f.block.trim().length).toBeGreaterThan(0);
+    }
   });
 });
 
